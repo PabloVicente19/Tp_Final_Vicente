@@ -43,13 +43,13 @@ namespace Negocio
         }
         public void CerrarConexion()
         {
-            if (_Lector == null)
+            if (_Lector != null)
                 _Lector.Close();
             _Conexion.Close();
         }
         public void SetearParametro(string parametro, object valor)
         {
-            
+            _Comando.Parameters.AddWithValue(parametro, valor);
         }
     }
 }
