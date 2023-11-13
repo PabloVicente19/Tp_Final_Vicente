@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dominio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,11 +11,16 @@ using System.Windows.Forms;
 
 namespace Interfaz
 {
-    public partial class frmMain : Form
+    public partial class FrmAltaProducto : Form
     {
-        public frmMain()
+        private Producto producto = null;
+        public FrmAltaProducto()
         {
             InitializeComponent();
+        }
+        private void FrmAltaProducto_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }

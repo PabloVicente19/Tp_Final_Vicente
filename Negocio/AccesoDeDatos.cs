@@ -15,7 +15,7 @@ namespace Negocio
     
         public AccesoDeDatos()
         {
-            _Conexion = new SqlConnection("");
+            _Conexion = new SqlConnection("SERVER=.\\SQLEXPRESS; DATABASE=CATALOGO_DB; INTEGRATED SECURITY=TRUE; ");
             _Comando = new SqlCommand();
         }
         public SqlDataReader Lector
@@ -50,6 +50,20 @@ namespace Negocio
         public void SetearParametro(string parametro, object valor)
         {
             _Comando.Parameters.AddWithValue(parametro, valor);
+        }
+        public void EjecutarAccion()
+        {
+            _Comando.Connection = _Conexion;
+            try
+            {
+                _Conexion.Open();
+                _Comando.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
     }
 }
