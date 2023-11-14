@@ -90,15 +90,13 @@ namespace Interfaz
         // evento del texbox precio .
         private void EscribirSoloNumeros(object sender, KeyPressEventArgs e)
         {
-            if(!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
+
         }
 
         private void txtImagen_Leave(object sender, EventArgs e)
         {
             Helper.CargarImagen(pboImagen, txtImagen.Text);
         }
+
     }
 }
