@@ -87,5 +87,20 @@ namespace Interfaz
             dgvProductos.DataSource = null;
             dgvProductos.DataSource = productos;
         }
+
+        private void btnEliminarProducto_Click(object sender, EventArgs e)
+        {
+            Producto seleccionado = (Producto)dgvProductos.CurrentRow.DataBoundItem;
+            DialogResult = MessageBox.Show($"¿Desea eliminar {seleccionado.Nombre}?","Eliminar Producto",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+            if (DialogResult == DialogResult.Yes)
+            {
+                negocio.EliminarProducto(seleccionado);
+                MessageBox.Show("Producto Eliminado", "Eliminar Producto");
+            }
+            productos = negocio.Listar();
+            dgvProductos.DataSource = null;
+            dgvProductos.DataSource = productos;
+
+        }
     }
 }

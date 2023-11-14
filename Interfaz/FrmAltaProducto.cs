@@ -65,18 +65,20 @@ namespace Interfaz
                 producto.Categoria = (Categoria)cboCategoria.SelectedItem;
                 producto.Precio = Convert.ToDouble(txtPrecio.Text);
                 producto.Imagen = txtImagen.Text;
-                if (producto.Id != null)
+
+                if (producto.Id != 0)
                 {
                     productoNegocio.ModificarProducto(producto);
+                    MessageBox.Show("¡Producto Modificado!", "Alta de producto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                     this.Close();
                 }
                 else
                 {
                     productoNegocio.AgregarProducto(producto);
+                    MessageBox.Show("¡Agregado Correctamente!","Alta de producto",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
                 }
-                MessageBox.Show("¡Agregado Correctamente!","Alta de producto",MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
-
             }
             catch (Exception ex)
             {

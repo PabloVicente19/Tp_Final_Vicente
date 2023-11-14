@@ -44,6 +44,8 @@
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
             this.pboProducto = new System.Windows.Forms.PictureBox();
+            this.btnVerProducto = new System.Windows.Forms.Button();
+            this.btnBusquedaAvanzada = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panelContenedor.SuspendLayout();
@@ -80,6 +82,9 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.panel1.Controls.Add(this.btnBusquedaAvanzada);
+            this.panel1.Controls.Add(this.btnVerProducto);
             this.panel1.Controls.Add(this.btnEliminarProducto);
             this.panel1.Controls.Add(this.btnModificarProducto);
             this.panel1.Controls.Add(this.btnSalir);
@@ -94,7 +99,7 @@
             // 
             this.btnEliminarProducto.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminarProducto.Image")));
             this.btnEliminarProducto.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnEliminarProducto.Location = new System.Drawing.Point(296, 5);
+            this.btnEliminarProducto.Location = new System.Drawing.Point(340, 5);
             this.btnEliminarProducto.Name = "btnEliminarProducto";
             this.btnEliminarProducto.Padding = new System.Windows.Forms.Padding(0, 10, 0, 5);
             this.btnEliminarProducto.Size = new System.Drawing.Size(90, 90);
@@ -102,12 +107,13 @@
             this.btnEliminarProducto.Text = "Eliminar";
             this.btnEliminarProducto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEliminarProducto.UseVisualStyleBackColor = true;
+            this.btnEliminarProducto.Click += new System.EventHandler(this.btnEliminarProducto_Click);
             // 
             // btnModificarProducto
             // 
             this.btnModificarProducto.Image = ((System.Drawing.Image)(resources.GetObject("btnModificarProducto.Image")));
             this.btnModificarProducto.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnModificarProducto.Location = new System.Drawing.Point(200, 5);
+            this.btnModificarProducto.Location = new System.Drawing.Point(229, 5);
             this.btnModificarProducto.Name = "btnModificarProducto";
             this.btnModificarProducto.Padding = new System.Windows.Forms.Padding(0, 10, 0, 5);
             this.btnModificarProducto.Size = new System.Drawing.Size(90, 90);
@@ -121,7 +127,7 @@
             // 
             this.btnSalir.Image = ((System.Drawing.Image)(resources.GetObject("btnSalir.Image")));
             this.btnSalir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSalir.Location = new System.Drawing.Point(677, 5);
+            this.btnSalir.Location = new System.Drawing.Point(673, 5);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Padding = new System.Windows.Forms.Padding(0, 10, 0, 5);
             this.btnSalir.Size = new System.Drawing.Size(90, 90);
@@ -135,7 +141,7 @@
             // 
             this.btnAgregarProducto.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarProducto.Image")));
             this.btnAgregarProducto.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnAgregarProducto.Location = new System.Drawing.Point(103, 5);
+            this.btnAgregarProducto.Location = new System.Drawing.Point(118, 5);
             this.btnAgregarProducto.Name = "btnAgregarProducto";
             this.btnAgregarProducto.Padding = new System.Windows.Forms.Padding(0, 10, 0, 5);
             this.btnAgregarProducto.Size = new System.Drawing.Size(90, 90);
@@ -222,6 +228,26 @@
             this.pboProducto.TabIndex = 1;
             this.pboProducto.TabStop = false;
             // 
+            // btnVerProducto
+            // 
+            this.btnVerProducto.Location = new System.Drawing.Point(451, 5);
+            this.btnVerProducto.Name = "btnVerProducto";
+            this.btnVerProducto.Size = new System.Drawing.Size(90, 90);
+            this.btnVerProducto.TabIndex = 5;
+            this.btnVerProducto.Text = "Ver Producto";
+            this.btnVerProducto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnVerProducto.UseVisualStyleBackColor = true;
+            // 
+            // btnBusquedaAvanzada
+            // 
+            this.btnBusquedaAvanzada.Location = new System.Drawing.Point(562, 5);
+            this.btnBusquedaAvanzada.Name = "btnBusquedaAvanzada";
+            this.btnBusquedaAvanzada.Size = new System.Drawing.Size(90, 90);
+            this.btnBusquedaAvanzada.TabIndex = 6;
+            this.btnBusquedaAvanzada.Text = "Buscar";
+            this.btnBusquedaAvanzada.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnBusquedaAvanzada.UseVisualStyleBackColor = true;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -265,6 +291,8 @@
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Button btnModificarProducto;
         private System.Windows.Forms.Button btnEliminarProducto;
+        private System.Windows.Forms.Button btnBusquedaAvanzada;
+        private System.Windows.Forms.Button btnVerProducto;
     }
 }
 
