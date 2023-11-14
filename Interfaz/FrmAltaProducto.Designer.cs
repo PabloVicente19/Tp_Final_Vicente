@@ -97,6 +97,7 @@
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(121, 25);
             this.txtPrecio.TabIndex = 16;
+            this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EscribirSoloNumeros);
             // 
             // lblPrecio
             // 
@@ -116,6 +117,7 @@
             this.btnAgregar.TabIndex = 14;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // label7
             // 
@@ -130,9 +132,9 @@
             // 
             // pboImagen
             // 
-            this.pboImagen.Location = new System.Drawing.Point(240, 72);
+            this.pboImagen.Location = new System.Drawing.Point(268, 72);
             this.pboImagen.Name = "pboImagen";
-            this.pboImagen.Size = new System.Drawing.Size(253, 257);
+            this.pboImagen.Size = new System.Drawing.Size(225, 257);
             this.pboImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pboImagen.TabIndex = 12;
             this.pboImagen.TabStop = false;
@@ -143,6 +145,7 @@
             this.txtImagen.Name = "txtImagen";
             this.txtImagen.Size = new System.Drawing.Size(121, 25);
             this.txtImagen.TabIndex = 11;
+            this.txtImagen.Leave += new System.EventHandler(this.txtImagen_Leave);
             // 
             // txtDescripcion
             // 
