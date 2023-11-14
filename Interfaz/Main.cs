@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
+using static System.Net.WebRequestMethods;
 
 namespace Interfaz
 {
@@ -36,15 +37,28 @@ namespace Interfaz
                 this.Close();
             }
         }
-        private void dgvProductos_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            Producto seleccionado = (Producto)dgvProductos.CurrentRow.DataBoundItem;
-            CargarImagen(seleccionado.Imagen);
-        }
         private void btnAgregarProducto_Click(object sender, EventArgs e)
         {
             FrmAltaProducto altaProducto = new FrmAltaProducto();
             altaProducto.ShowDialog();
+        }
+        private void dgvProductos_SelectionChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if(dgvProductos.CurrentRow != null)
+                {
+                    Producto seleccionado = (Producto)dgvProductos.CurrentRow.DataBoundItem;
+                    OcultarCamposEnDgv("Id");
+                    OcultarCamposEnDgv("Descripcion");
+                    CargarImagen(seleccionado.Imagen);
+                }
+            }
+            catch (Exception ex )
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
         }
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
@@ -64,13 +78,14 @@ namespace Interfaz
         }
         private void CargarImagen(string imagen)
         {
+            string error = "https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg";
             try
             {
-               pboProducto.Load(imagen);
+                pboProducto.Load(imagen);
             }
             catch (Exception ex)
             {
-                pboProducto.Load("https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg");
+                pboProducto.Load(error);
             }
         }
 
