@@ -46,14 +46,12 @@
             this.lblDescripcion = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblCodigo = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.panelContenedor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pboImagen)).BeginInit();
             this.SuspendLayout();
             // 
             // panelContenedor
             // 
-            this.panelContenedor.Controls.Add(this.button1);
             this.panelContenedor.Controls.Add(this.cboCategoria);
             this.panelContenedor.Controls.Add(this.cboMarca);
             this.panelContenedor.Controls.Add(this.txtPrecio);
@@ -134,9 +132,9 @@
             // 
             // pboImagen
             // 
-            this.pboImagen.Location = new System.Drawing.Point(258, 60);
+            this.pboImagen.Location = new System.Drawing.Point(239, 60);
             this.pboImagen.Name = "pboImagen";
-            this.pboImagen.Size = new System.Drawing.Size(235, 304);
+            this.pboImagen.Size = new System.Drawing.Size(254, 304);
             this.pboImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pboImagen.TabIndex = 12;
             this.pboImagen.TabStop = false;
@@ -230,16 +228,6 @@
             this.lblCodigo.TabIndex = 0;
             this.lblCodigo.Text = "Código";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(226, 293);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(29, 23);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "...";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // FrmAltaProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -280,6 +268,5 @@
         private System.Windows.Forms.PictureBox pboImagen;
         private System.Windows.Forms.ComboBox cboCategoria;
         private System.Windows.Forms.ComboBox cboMarca;
-        private System.Windows.Forms.Button button1;
     }
 }

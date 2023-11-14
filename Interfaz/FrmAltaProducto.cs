@@ -22,6 +22,12 @@ namespace Interfaz
         {
             InitializeComponent();
         }
+        public FrmAltaProducto(Producto unProducto)
+        {
+            InitializeComponent();
+            this.producto = unProducto;
+            Text = "Modificar Producto";
+        }
         private void FrmAltaProducto_Load(object sender, EventArgs e)
         {
             MarcaNegocio marca = new MarcaNegocio();
@@ -29,10 +35,25 @@ namespace Interfaz
 
             cboCategoria.DataSource = categoria.Listar();
             cboMarca.DataSource = marca.Listar();
+
+            // si producto no es null, es porque se apreto el boton modificar
+            if (producto != null)
+            {
+                txtCodigo.Text = producto.Codigo;
+                txtNombre.Text = producto.Nombre;
+                txtDescripcion.Text = producto.Descripcion;
+                cboMarca.Text = producto.Marca.Descripcion;
+                cboCategoria.Text = producto.Categoria.Descripcion;
+                txtImagen.Text = producto.Imagen;
+                txtPrecio.Text = producto.Precio.ToString();
+                Helper.CargarImagen(pboImagen,txtImagen.Text);
+            }
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            ProductoNegocio productoNegocio = new ProductoNegocio();
+
             if (producto == null)
                 producto = new Producto();
             try
@@ -42,9 +63,19 @@ namespace Interfaz
                 producto.Descripcion = txtDescripcion.Text;
                 producto.Marca = (Marca)cboMarca.SelectedItem;
                 producto.Categoria = (Categoria)cboCategoria.SelectedItem;
-                producto.Precio = Convert.ToInt32(txtPrecio.Text);
+                producto.Precio = Convert.ToDouble(txtPrecio.Text);
                 producto.Imagen = txtImagen.Text;
-
+                if (producto.Id != null)
+                {
+                    productoNegocio.ModificarProducto(producto);
+                    this.Close();
+                }
+                else
+                {
+                    productoNegocio.AgregarProducto(producto);
+                }
+                MessageBox.Show("¡Agregado Correctamente!","Alta de producto",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
 
             }
             catch (Exception ex)

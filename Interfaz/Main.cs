@@ -20,14 +20,15 @@ namespace Interfaz
             InitializeComponent();
         }
         private ProductoNegocio negocio = new ProductoNegocio();
+        private Helper helper = new Helper();
         private List<Producto> productos;
         private void frmMain_Load(object sender, EventArgs e)
         {
             productos = negocio.Listar();
             dgvProductos.DataSource = productos;
-            CargarImagen(productos[0].Imagen);
-            OcultarCamposEnDgv("Id");
-            OcultarCamposEnDgv("Descripcion");
+            helper.CargarImagen(pboProducto, productos[0].Imagen);
+            helper.OcultarCamposEnDgb(dgvProductos, "Id");
+            helper.OcultarCamposEnDgb(dgvProductos, "Descripcion");
         }
         private void btnSalir_Click(object sender, EventArgs e)
         {
@@ -41,6 +42,11 @@ namespace Interfaz
         {
             FrmAltaProducto altaProducto = new FrmAltaProducto();
             altaProducto.ShowDialog();
+
+            // cuando cierra el formulario actualiza la datagrid
+            productos = negocio.Listar();
+            dgvProductos.DataSource = null;
+            dgvProductos.DataSource = productos;
         }
         private void dgvProductos_SelectionChanged(object sender, EventArgs e)
         {
@@ -49,14 +55,13 @@ namespace Interfaz
                 if(dgvProductos.CurrentRow != null)
                 {
                     Producto seleccionado = (Producto)dgvProductos.CurrentRow.DataBoundItem;
-                    OcultarCamposEnDgv("Id");
-                    OcultarCamposEnDgv("Descripcion");
-                    CargarImagen(seleccionado.Imagen);
+                    helper.OcultarCamposEnDgb(dgvProductos, "Id");
+                    helper.OcultarCamposEnDgb(dgvProductos, "Descripcion");
+                    helper.CargarImagen(pboProducto, seleccionado.Imagen);
                 }
             }
             catch (Exception ex )
             {
-
                 MessageBox.Show(ex.ToString());
             }
         }
@@ -71,23 +76,16 @@ namespace Interfaz
             dgvProductos.DataSource = listaFiltrada;
         }
 
-        // METODOS QUE MODIFICAN FUNCIONALIDADES
-        private void OcultarCamposEnDgv(string campo)
+        private void btnModificarProducto_Click(object sender, EventArgs e)
         {
-            dgvProductos.Columns[campo].Visible = false;
-        }
-        private void CargarImagen(string imagen)
-        {
-            string error = "https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg";
-            try
-            {
-                pboProducto.Load(imagen);
-            }
-            catch (Exception ex)
-            {
-                pboProducto.Load(error);
-            }
-        }
+            Producto actualProducto = (Producto)dgvProductos.CurrentRow.DataBoundItem;
+            FrmAltaProducto modificarProducto = new FrmAltaProducto(actualProducto);
+            modificarProducto.ShowDialog();
 
+
+            productos = negocio.Listar();
+            dgvProductos.DataSource = null;
+            dgvProductos.DataSource = productos;
+        }
     }
 }

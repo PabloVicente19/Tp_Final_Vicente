@@ -11,7 +11,7 @@ namespace Negocio
         private AccesoDeDatos datos;
 
        public List<Producto> Listar()
-        {
+       {
             datos = new AccesoDeDatos();
             List<Producto> productos = new List<Producto>();
             try
@@ -48,6 +48,61 @@ namespace Negocio
             {
                 datos.CerrarConexion();
             }
+       }
+        public void AgregarProducto(Producto unProducto)
+        {
+            datos = new AccesoDeDatos();
+            try
+            {
+                datos.SetearConsulta("INSERT INTO ARTICULOS VALUES(@Codigo,@Nombre,@Descripcion,@Marca,@Categoria,@Img,@Precio)");
+                datos.SetearParametro("@Codigo", unProducto.Codigo);
+                datos.SetearParametro("@Nombre", unProducto.Nombre);
+                datos.SetearParametro("@Descripcion", unProducto.Descripcion);
+                datos.SetearParametro("@Marca", unProducto.Marca.Id);
+                datos.SetearParametro("@Categoria", unProducto.Categoria.Id);
+                datos.SetearParametro("@Img", unProducto.Imagen);
+                datos.SetearParametro("@Precio", unProducto.Precio);
+                
+                datos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                ex.ToString();
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
         }
+        public void ModificarProducto(Producto unProducto)
+        {
+            datos = new AccesoDeDatos();
+            try
+            {
+                datos.SetearConsulta("UPDATE ARTICULOS SET Codigo = @Codigo ,Nombre = @Nombre,Descripcion = @Descripcion,IdMarca = @IdMarca,IdCategoria = @IdCategoria, ImagenUrl = @Img,Precio = @Precio where Id = @id");
+                datos.SetearParametro("@Id",unProducto.Id);
+                datos.SetearParametro("Codigo", unProducto.Codigo);
+                datos.SetearParametro("Nombre",unProducto.Nombre);
+                datos.SetearParametro("Descripcion", unProducto.Descripcion);
+                datos.SetearParametro("IdMarca", unProducto.Marca.Id);
+                datos.SetearParametro("IdCategoria", unProducto.Categoria.Id);
+                datos.SetearParametro("Img", unProducto.Imagen);
+                datos.SetearParametro("Precio", unProducto.Precio);
+
+                datos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+        
+
     }
 }

@@ -9,6 +9,7 @@ namespace Interfaz
 {
     public class Helper
     {
+        // CARGA IMAGENES EN UN PICTUREBOX
       public void CargarImagen(PictureBox pictureBox,string imagen)
       {
         string error = "https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg";
@@ -21,6 +22,10 @@ namespace Interfaz
           pictureBox.Load(error);
         }
       }
-
+        // OCULTA CAMPOS EN UN DATAGRID
+        public void OcultarCamposEnDgb(DataGridView unDataGrid,string columna)
+        {
+            unDataGrid.Columns[columna].Visible = false;
+        }
     }
 }

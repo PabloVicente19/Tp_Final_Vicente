@@ -33,6 +33,8 @@
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnEliminarProducto = new System.Windows.Forms.Button();
+            this.btnModificarProducto = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnAgregarProducto = new System.Windows.Forms.Button();
             this.btnVerCatalogo = new System.Windows.Forms.Button();
@@ -78,6 +80,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnEliminarProducto);
+            this.panel1.Controls.Add(this.btnModificarProducto);
             this.panel1.Controls.Add(this.btnSalir);
             this.panel1.Controls.Add(this.btnAgregarProducto);
             this.panel1.Controls.Add(this.btnVerCatalogo);
@@ -85,6 +89,33 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(776, 100);
             this.panel1.TabIndex = 1;
+            // 
+            // btnEliminarProducto
+            // 
+            this.btnEliminarProducto.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminarProducto.Image")));
+            this.btnEliminarProducto.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnEliminarProducto.Location = new System.Drawing.Point(296, 5);
+            this.btnEliminarProducto.Name = "btnEliminarProducto";
+            this.btnEliminarProducto.Padding = new System.Windows.Forms.Padding(0, 10, 0, 5);
+            this.btnEliminarProducto.Size = new System.Drawing.Size(90, 90);
+            this.btnEliminarProducto.TabIndex = 4;
+            this.btnEliminarProducto.Text = "Eliminar";
+            this.btnEliminarProducto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnEliminarProducto.UseVisualStyleBackColor = true;
+            // 
+            // btnModificarProducto
+            // 
+            this.btnModificarProducto.Image = ((System.Drawing.Image)(resources.GetObject("btnModificarProducto.Image")));
+            this.btnModificarProducto.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnModificarProducto.Location = new System.Drawing.Point(200, 5);
+            this.btnModificarProducto.Name = "btnModificarProducto";
+            this.btnModificarProducto.Padding = new System.Windows.Forms.Padding(0, 10, 0, 5);
+            this.btnModificarProducto.Size = new System.Drawing.Size(90, 90);
+            this.btnModificarProducto.TabIndex = 3;
+            this.btnModificarProducto.Text = "Modificar";
+            this.btnModificarProducto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnModificarProducto.UseVisualStyleBackColor = true;
+            this.btnModificarProducto.Click += new System.EventHandler(this.btnModificarProducto_Click);
             // 
             // btnSalir
             // 
@@ -232,6 +263,8 @@
         private System.Windows.Forms.DataGridView dgvProductos;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtBuscar;
+        private System.Windows.Forms.Button btnModificarProducto;
+        private System.Windows.Forms.Button btnEliminarProducto;
     }
 }
 
