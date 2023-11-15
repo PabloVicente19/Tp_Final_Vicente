@@ -27,5 +27,31 @@ namespace Interfaz
         {
             unDataGrid.Columns[columna].Visible = false;
         }
+
+        // 
+        public bool ValidarNombre(TextBox textBox) 
+        {
+            bool valid = false;
+            if (textBox.Text.Length > 2)
+                 valid = true;
+            else
+            {
+               MessageBox.Show("¡El Nombre es Obligatorio");
+            }
+            return valid;
+        }
+        public bool ValidarPrecio(TextBox textBox)
+        {
+            bool valid = false;
+            if(textBox.Text.Length > 0)
+            {
+                valid = true;
+            }
+            else
+            {
+                MessageBox.Show("¡El precio es obligatorio!");
+            }
+            return valid;
+        }
     }
 }

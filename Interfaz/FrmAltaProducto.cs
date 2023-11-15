@@ -70,7 +70,6 @@ namespace Interfaz
                 {
                     productoNegocio.ModificarProducto(producto);
                     MessageBox.Show("¡Producto Modificado!", "Alta de producto", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                     this.Close();
                 }
                 else
@@ -80,12 +79,10 @@ namespace Interfaz
                     this.Close();
                 }
             }
-            catch (Exception ex)
+            catch(FormatException ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("El Precio es obligatorio");
             }
-
-
         }   
 
 

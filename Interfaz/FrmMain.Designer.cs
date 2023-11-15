@@ -32,6 +32,12 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.productosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.agregarProductoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modificarProductoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eliminarProductoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verProductosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.busquedaAvanzadaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnBusquedaAvanzada = new System.Windows.Forms.Button();
             this.btnVerProducto = new System.Windows.Forms.Button();
@@ -57,7 +63,8 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.archivoToolStripMenuItem});
+            this.archivoToolStripMenuItem,
+            this.productosToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 3, 0, 3);
@@ -76,8 +83,62 @@
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.salirToolStripMenuItem.ShortcutKeyDisplayString = "Alt+F4";
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.salirToolStripMenuItem.Text = "Salir";
+            // 
+            // productosToolStripMenuItem
+            // 
+            this.productosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.agregarProductoToolStripMenuItem,
+            this.modificarProductoToolStripMenuItem,
+            this.eliminarProductoToolStripMenuItem,
+            this.verProductosToolStripMenuItem,
+            this.busquedaAvanzadaToolStripMenuItem});
+            this.productosToolStripMenuItem.Name = "productosToolStripMenuItem";
+            this.productosToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.productosToolStripMenuItem.Size = new System.Drawing.Size(73, 19);
+            this.productosToolStripMenuItem.Text = "Productos";
+            // 
+            // agregarProductoToolStripMenuItem
+            // 
+            this.agregarProductoToolStripMenuItem.Name = "agregarProductoToolStripMenuItem";
+            this.agregarProductoToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+A";
+            this.agregarProductoToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+            this.agregarProductoToolStripMenuItem.Text = "Agregar Producto";
+            this.agregarProductoToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // modificarProductoToolStripMenuItem
+            // 
+            this.modificarProductoToolStripMenuItem.Name = "modificarProductoToolStripMenuItem";
+            this.modificarProductoToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+S";
+            this.modificarProductoToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+            this.modificarProductoToolStripMenuItem.Text = "Modificar Producto";
+            this.modificarProductoToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // eliminarProductoToolStripMenuItem
+            // 
+            this.eliminarProductoToolStripMenuItem.Name = "eliminarProductoToolStripMenuItem";
+            this.eliminarProductoToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+D";
+            this.eliminarProductoToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+            this.eliminarProductoToolStripMenuItem.Text = "Eliminar Producto";
+            this.eliminarProductoToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // verProductosToolStripMenuItem
+            // 
+            this.verProductosToolStripMenuItem.Name = "verProductosToolStripMenuItem";
+            this.verProductosToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+Z";
+            this.verProductosToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+            this.verProductosToolStripMenuItem.Text = "Ver Productos";
+            this.verProductosToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // busquedaAvanzadaToolStripMenuItem
+            // 
+            this.busquedaAvanzadaToolStripMenuItem.Name = "busquedaAvanzadaToolStripMenuItem";
+            this.busquedaAvanzadaToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+X";
+            this.busquedaAvanzadaToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+            this.busquedaAvanzadaToolStripMenuItem.Text = "Busqueda Avanzada";
+            this.busquedaAvanzadaToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel1
             // 
@@ -118,6 +179,7 @@
             this.btnVerProducto.Text = "Ver Producto";
             this.btnVerProducto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnVerProducto.UseVisualStyleBackColor = true;
+            this.btnVerProducto.Click += new System.EventHandler(this.btnVerProducto_Click);
             // 
             // btnEliminarProducto
             // 
@@ -177,10 +239,10 @@
             // 
             // panelContenedor
             // 
+            this.panelContenedor.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panelContenedor.Controls.Add(this.panelListaProductos);
             this.panelContenedor.Controls.Add(this.panel1);
             this.panelContenedor.Controls.Add(this.menuStrip1);
-            this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContenedor.Location = new System.Drawing.Point(0, 0);
             this.panelContenedor.Margin = new System.Windows.Forms.Padding(5);
             this.panelContenedor.Name = "panelContenedor";
@@ -228,6 +290,7 @@
             this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProductos.Size = new System.Drawing.Size(546, 369);
             this.dgvProductos.TabIndex = 2;
+            this.dgvProductos.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvProductos_CellMouseDoubleClick);
             this.dgvProductos.SelectionChanged += new System.EventHandler(this.dgvProductos_SelectionChanged);
             // 
             // pboProducto
@@ -252,6 +315,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Catálogo";
             this.Load += new System.EventHandler(this.frmMain_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmMain_KeyDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -283,6 +347,12 @@
         private System.Windows.Forms.Button btnEliminarProducto;
         private System.Windows.Forms.Button btnBusquedaAvanzada;
         private System.Windows.Forms.Button btnVerProducto;
+        private System.Windows.Forms.ToolStripMenuItem productosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem agregarProductoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem modificarProductoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem eliminarProductoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verProductosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem busquedaAvanzadaToolStripMenuItem;
     }
 }
 

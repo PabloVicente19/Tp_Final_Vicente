@@ -52,6 +52,12 @@
     <Compile Include="FrmAltaProducto.Designer.cs">
       <DependentUpon>FrmAltaProducto.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmProductoDetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProductoDetalle.Designer.cs">
+      <DependentUpon>FrmProductoDetalle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helper.cs" />
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
@@ -66,6 +72,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProductoDetalle.resx">
+      <DependentUpon>FrmProductoDetalle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

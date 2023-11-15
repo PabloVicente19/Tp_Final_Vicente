@@ -18,6 +18,7 @@ namespace Interfaz
         public frmMain()
         {
             InitializeComponent();
+            this.KeyPreview = true;
         }
         private ProductoNegocio negocio = new ProductoNegocio();
         private Helper helper = new Helper();
@@ -101,6 +102,43 @@ namespace Interfaz
             dgvProductos.DataSource = null;
             dgvProductos.DataSource = productos;
 
+        }
+
+        private void dgvProductos_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            Producto Seleccionado = (Producto)dgvProductos.CurrentRow.DataBoundItem;
+            FrmProductoDetalle detalle = new FrmProductoDetalle(Seleccionado);
+            detalle.ShowDialog();
+        }
+
+        private void btnVerProducto_Click(object sender, EventArgs e)
+        {
+            Producto Seleccionado = (Producto)dgvProductos.CurrentRow.DataBoundItem;
+            FrmProductoDetalle detalle = new FrmProductoDetalle(Seleccionado);
+            detalle.ShowDialog();
+        }
+
+        private void frmMain_KeyDown(object sender, KeyEventArgs e)
+        {
+            // falta configurar los 2 restantes
+            if (e.KeyCode == Keys.A)
+            {
+                FrmAltaProducto altaProducto = new FrmAltaProducto();
+                altaProducto.ShowDialog();
+            }
+            else if (e.KeyCode == Keys.S)
+            {
+                Producto seleccionado = (Producto)dgvProductos.CurrentRow.DataBoundItem;
+                FrmAltaProducto modificarProducto = new FrmAltaProducto(seleccionado);
+                modificarProducto.ShowDialog();
+            }
+            else if( e.KeyCode == Keys.D) 
+            {
+                Producto seleccionado = (Producto)dgvProductos.CurrentRow.DataBoundItem;
+                FrmProductoDetalle productoDetalle = new FrmProductoDetalle(seleccionado);
+                productoDetalle.ShowDialog();
+
+            }
         }
     }
 }
