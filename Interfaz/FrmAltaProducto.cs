@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
+using System.IO;
 
 namespace Interfaz
 {
@@ -16,6 +18,7 @@ namespace Interfaz
     {
         private Producto producto = null;
         private Helper Helper = new Helper();
+        private OpenFileDialog imagen = null;
 
 
         public FrmAltaProducto()
@@ -74,6 +77,10 @@ namespace Interfaz
                 }
                 else
                 {
+                    if(imagen != null && (!txtImagen.Text.ToLower().Contains("http")))
+                    {
+                      File.Copy(imagen.FileName, ConfigurationManager.AppSettings["images-catalogo"] + imagen.SafeFileName,true);
+                    }
                     productoNegocio.AgregarProducto(producto);
                     MessageBox.Show("¡Agregado Correctamente!","Alta de producto",MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
@@ -97,5 +104,15 @@ namespace Interfaz
             Helper.CargarImagen(pboImagen, txtImagen.Text);
         }
 
+        private void BtnAgregarImagen_Click(object sender, EventArgs e)
+        {
+            imagen = new OpenFileDialog();
+            imagen.Filter = "jpg|*.jpg|png|*.png";
+            if (imagen.ShowDialog() == DialogResult.OK)
+            {
+                txtImagen.Text = imagen.FileName;
+                Helper.CargarImagen(pboImagen, imagen.FileName);
+            }
+        }
     }
 }

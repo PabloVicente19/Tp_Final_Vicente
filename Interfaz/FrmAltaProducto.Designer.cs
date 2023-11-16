@@ -46,12 +46,14 @@
             this.lblDescripcion = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblCodigo = new System.Windows.Forms.Label();
+            this.BtnAgregarImagen = new System.Windows.Forms.Button();
             this.panelContenedor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pboImagen)).BeginInit();
             this.SuspendLayout();
             // 
             // panelContenedor
             // 
+            this.panelContenedor.Controls.Add(this.BtnAgregarImagen);
             this.panelContenedor.Controls.Add(this.cboCategoria);
             this.panelContenedor.Controls.Add(this.cboMarca);
             this.panelContenedor.Controls.Add(this.txtPrecio);
@@ -131,9 +133,9 @@
             // 
             // pboImagen
             // 
-            this.pboImagen.Location = new System.Drawing.Point(239, 60);
+            this.pboImagen.Location = new System.Drawing.Point(287, 60);
             this.pboImagen.Name = "pboImagen";
-            this.pboImagen.Size = new System.Drawing.Size(254, 304);
+            this.pboImagen.Size = new System.Drawing.Size(206, 304);
             this.pboImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pboImagen.TabIndex = 12;
             this.pboImagen.TabStop = false;
@@ -227,6 +229,16 @@
             this.lblCodigo.TabIndex = 0;
             this.lblCodigo.Text = "Código";
             // 
+            // BtnAgregarImagen
+            // 
+            this.BtnAgregarImagen.Location = new System.Drawing.Point(226, 292);
+            this.BtnAgregarImagen.Name = "BtnAgregarImagen";
+            this.BtnAgregarImagen.Size = new System.Drawing.Size(29, 23);
+            this.BtnAgregarImagen.TabIndex = 16;
+            this.BtnAgregarImagen.Text = "+";
+            this.BtnAgregarImagen.UseVisualStyleBackColor = true;
+            this.BtnAgregarImagen.Click += new System.EventHandler(this.BtnAgregarImagen_Click);
+            // 
             // FrmAltaProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -267,5 +279,6 @@
         private System.Windows.Forms.PictureBox pboImagen;
         private System.Windows.Forms.ComboBox cboCategoria;
         private System.Windows.Forms.ComboBox cboMarca;
+        private System.Windows.Forms.Button BtnAgregarImagen;
     }
 }

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
 using static System.Net.WebRequestMethods;
+using System.Text.RegularExpressions;
 
 namespace Interfaz
 {
@@ -18,15 +19,16 @@ namespace Interfaz
         public frmMain()
         {
             InitializeComponent();
-            this.KeyPreview = true;
+
         }
         private ProductoNegocio negocio = new ProductoNegocio();
-        private Helper helper = new Helper();
+        private Helper helper = new Helper(); // clase que contiene metodos que modifican o crean funcionalidades
         private List<Producto> productos;
         private void frmMain_Load(object sender, EventArgs e)
         {
             productos = negocio.Listar();
             dgvProductos.DataSource = productos;
+
             helper.CargarImagen(pboProducto, productos[0].Imagen);
             helper.OcultarCamposEnDgb(dgvProductos, "Id");
             helper.OcultarCamposEnDgb(dgvProductos, "Descripcion");
@@ -44,8 +46,8 @@ namespace Interfaz
             FrmAltaProducto altaProducto = new FrmAltaProducto();
             altaProducto.ShowDialog();
 
-            // cuando cierra el formulario actualiza la datagrid
-            productos = negocio.Listar();
+            // Actualizo el dataGrid para mostrar los nuevos productos.
+            productos = negocio.Listar();   
             dgvProductos.DataSource = null;
             dgvProductos.DataSource = productos;
         }
@@ -71,7 +73,7 @@ namespace Interfaz
             List<Producto> listaFiltrada;
             string filtro = txtBuscar.Text;
             
-            listaFiltrada = productos.FindAll(obj => obj.Nombre.ToLower().Contains(filtro.ToLower()) || obj.Codigo.ToLower().Contains(filtro.ToLower()));
+            listaFiltrada = productos.FindAll(obj => obj.Nombre.ToLower().Contains(filtro.ToLower()) || obj.Codigo.ToLower().Contains(filtro.ToLower()) || obj.Marca.Descripcion.ToLower().Contains(filtro.ToLower()));
             
             dgvProductos.DataSource = null;
             dgvProductos.DataSource = listaFiltrada;
@@ -118,27 +120,42 @@ namespace Interfaz
             detalle.ShowDialog();
         }
 
-        private void frmMain_KeyDown(object sender, KeyEventArgs e)
+        private void btnBusquedaAvanzada_Click(object sender, EventArgs e)
         {
-            // falta configurar los 2 restantes
-            if (e.KeyCode == Keys.A)
+            if(panelBusquedaContenedor.Visible == false) 
             {
-                FrmAltaProducto altaProducto = new FrmAltaProducto();
-                altaProducto.ShowDialog();
+                panelBusquedaContenedor.Visible = true;
             }
-            else if (e.KeyCode == Keys.S)
+            else
             {
-                Producto seleccionado = (Producto)dgvProductos.CurrentRow.DataBoundItem;
-                FrmAltaProducto modificarProducto = new FrmAltaProducto(seleccionado);
-                modificarProducto.ShowDialog();
+                panelBusquedaContenedor.Visible = false;
             }
-            else if( e.KeyCode == Keys.D) 
-            {
-                Producto seleccionado = (Producto)dgvProductos.CurrentRow.DataBoundItem;
-                FrmProductoDetalle productoDetalle = new FrmProductoDetalle(seleccionado);
-                productoDetalle.ShowDialog();
+        }
 
+        private void cboFiltroCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MarcaNegocio marca = new MarcaNegocio();
+
+            string[] criterioPrecio = { "Mayor a", "Menor a", "Igual a" };
+
+            switch (cboFiltroCampo.SelectedItem.ToString())
+            {
+                case ("Precio"):
+                    cboFiltroCriterio.DataSource = criterioPrecio;
+                    break;
+                case ("Marca"):
+                    cboFiltroCriterio.DataSource = marca.Listar();
+                    break;
+                default:
+                    break;
             }
+        }
+
+        private void cboFiltroCampo_DropDown(object sender, EventArgs e)
+        {
+            string[] campos = { "Precio", "Marca" };
+
+            cboFiltroCampo.DataSource = campos;
         }
     }
 }
