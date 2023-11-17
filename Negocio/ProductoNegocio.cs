@@ -120,6 +120,10 @@ namespace Negocio
                 datos.CerrarConexion();
             }
         }
+        public void BuscarProducto(string campo, string criterio, string descripcion)
+        {
+
+        }
         
 
     }
