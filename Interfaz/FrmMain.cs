@@ -33,24 +33,17 @@ namespace Interfaz
             helper.OcultarCamposEnDgb(dgvProductos, "Id");
             helper.OcultarCamposEnDgb(dgvProductos, "Descripcion");
         }
+
         private void btnSalir_Click(object sender, EventArgs e)
         {
+
             DialogResult = MessageBox.Show("¿Desea Salir?","Salir",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
             if (DialogResult == DialogResult.Yes) 
             {
                 this.Close();
             }
         }
-        private void btnAgregarProducto_Click(object sender, EventArgs e)
-        {
-            FrmAltaProducto altaProducto = new FrmAltaProducto();
-            altaProducto.ShowDialog();
 
-            // Actualizo el dataGrid para mostrar los nuevos productos.
-            productos = negocio.Listar();   
-            dgvProductos.DataSource = null;
-            dgvProductos.DataSource = productos;
-        }
         private void dgvProductos_SelectionChanged(object sender, EventArgs e)
         {
             try
@@ -77,6 +70,17 @@ namespace Interfaz
             
             dgvProductos.DataSource = null;
             dgvProductos.DataSource = listaFiltrada;
+        }
+
+        private void btnAgregarProducto_Click(object sender, EventArgs e)
+        {
+            FrmAltaProducto altaProducto = new FrmAltaProducto();
+            altaProducto.ShowDialog();
+
+            // Actualizo el dataGrid para mostrar los nuevos productos.
+            productos = negocio.Listar();   
+            dgvProductos.DataSource = null;
+            dgvProductos.DataSource = productos;
         }
 
         private void btnModificarProducto_Click(object sender, EventArgs e)
@@ -106,14 +110,14 @@ namespace Interfaz
 
         }
 
-        private void dgvProductos_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void btnVerProducto_Click(object sender, EventArgs e)
         {
             Producto Seleccionado = (Producto)dgvProductos.CurrentRow.DataBoundItem;
             FrmProductoDetalle detalle = new FrmProductoDetalle(Seleccionado);
             detalle.ShowDialog();
         }
 
-        private void btnVerProducto_Click(object sender, EventArgs e)
+        private void dgvProductos_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             Producto Seleccionado = (Producto)dgvProductos.CurrentRow.DataBoundItem;
             FrmProductoDetalle detalle = new FrmProductoDetalle(Seleccionado);
@@ -135,6 +139,7 @@ namespace Interfaz
         private void cboFiltroCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
             MarcaNegocio marca = new MarcaNegocio();
+            CategoriaNegocio categorias = new CategoriaNegocio();
 
             string[] criterioPrecio = { "Mayor a", "Menor a", "Igual a" };
 
@@ -146,6 +151,9 @@ namespace Interfaz
                 case ("Marca"):
                     cboFiltroCriterio.DataSource = marca.Listar();
                     break;
+                case ("Categoria"):
+                    cboFiltroCriterio.DataSource = categorias.Listar();
+                    break;
                 default:
                     break;
             }
@@ -153,9 +161,64 @@ namespace Interfaz
 
         private void cboFiltroCampo_DropDown(object sender, EventArgs e)
         {
-            string[] campos = { "Precio", "Marca" };
+            string[] campos = { "Precio", "Marca","Categoria" };
 
             cboFiltroCampo.DataSource = campos;
+        }
+
+        // botones del menuStrip
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult = MessageBox.Show("¿Desea Salir?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (DialogResult == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        private void agregarProductoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmAltaProducto altaProducto = new FrmAltaProducto();
+            altaProducto.ShowDialog();
+
+            // Actualizo el dataGrid para mostrar los nuevos productos.
+            productos = negocio.Listar();
+            dgvProductos.DataSource = null;
+            dgvProductos.DataSource = productos;
+        }
+
+        private void modificarProductoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            Producto actualProducto = (Producto)dgvProductos.CurrentRow.DataBoundItem;
+            FrmAltaProducto modificarProducto = new FrmAltaProducto(actualProducto);
+            modificarProducto.ShowDialog();
+
+
+            productos = negocio.Listar();
+            dgvProductos.DataSource = null;
+            dgvProductos.DataSource = productos;
+        }
+
+        private void eliminarProductoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Producto seleccionado = (Producto)dgvProductos.CurrentRow.DataBoundItem;
+            DialogResult = MessageBox.Show($"¿Desea eliminar {seleccionado.Nombre}?", "Eliminar Producto", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (DialogResult == DialogResult.Yes)
+            {
+                negocio.EliminarProducto(seleccionado);
+                MessageBox.Show("Producto Eliminado", "Eliminar Producto");
+            }
+            productos = negocio.Listar();
+            dgvProductos.DataSource = null;
+            dgvProductos.DataSource = productos;
+        }
+
+        private void verProductosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Producto Seleccionado = (Producto)dgvProductos.CurrentRow.DataBoundItem;
+            FrmProductoDetalle detalle = new FrmProductoDetalle(Seleccionado);
+            detalle.ShowDialog();
         }
     }
 }

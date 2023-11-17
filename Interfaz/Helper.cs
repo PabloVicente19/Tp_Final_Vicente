@@ -10,7 +10,7 @@ namespace Interfaz
     public class Helper
     {
         // CARGA IMAGENES EN UN PICTUREBOX
-      public void CargarImagen(PictureBox pictureBox,string imagen)
+        public void CargarImagen(PictureBox pictureBox,string imagen)
       {
         string error = "https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg";
         try
@@ -29,29 +29,30 @@ namespace Interfaz
         }
 
         // 
-        public bool ValidarNombre(TextBox textBox) 
+        public bool ValidarTextBox(TextBox textBox, string mensaje) 
         {
             bool valid = false;
             if (textBox.Text.Length > 2)
                  valid = true;
             else
             {
-               MessageBox.Show("¡El Nombre es Obligatorio");
+               MessageBox.Show("¡El "+ mensaje +" es Obligatorio");
             }
             return valid;
         }
-        public bool ValidarPrecio(TextBox textBox)
+
+        public bool ValidarImagen(TextBox textBox)
         {
             bool valid = false;
-            if(textBox.Text.Length > 0)
+
+            if(ValidarImagen(textBox) == true)
             {
                 valid = true;
             }
-            else
-            {
-                MessageBox.Show("¡El precio es obligatorio!");
-            }
+
             return valid;
         }
+
+        
     }
 }

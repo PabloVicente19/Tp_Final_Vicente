@@ -19,8 +19,6 @@ namespace Interfaz
         private Producto producto = null;
         private Helper Helper = new Helper();
         private OpenFileDialog imagen = null;
-
-
         public FrmAltaProducto()
         {
             InitializeComponent();
@@ -30,6 +28,7 @@ namespace Interfaz
             InitializeComponent();
             this.producto = unProducto;
             Text = "Modificar Producto";
+            lblTitulo.Text = "Modificar Producto";
         }
         private void FrmAltaProducto_Load(object sender, EventArgs e)
         {
@@ -52,7 +51,6 @@ namespace Interfaz
                 Helper.CargarImagen(pboImagen,txtImagen.Text);
             }
         }
-
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             ProductoNegocio productoNegocio = new ProductoNegocio();
@@ -62,11 +60,19 @@ namespace Interfaz
             try
             {
                 producto.Codigo = txtCodigo.Text;
-                producto.Nombre = txtNombre.Text;
+                if (Helper.ValidarTextBox(txtNombre, lblNombre.Text))
+                    producto.Nombre = txtNombre.Text;
+                else
+                    return;
+                if (Helper.ValidarTextBox(txtPrecio,lblPrecio.Text))
+                    producto.Precio = Convert.ToDouble(txtPrecio.Text);
+                else
+                    return;
+                
                 producto.Descripcion = txtDescripcion.Text;
                 producto.Marca = (Marca)cboMarca.SelectedItem;
                 producto.Categoria = (Categoria)cboCategoria.SelectedItem;
-                producto.Precio = Convert.ToDouble(txtPrecio.Text);
+
                 producto.Imagen = txtImagen.Text;
 
                 if (producto.Id != 0)
@@ -88,22 +94,13 @@ namespace Interfaz
             }
             catch(FormatException ex)
             {
-                MessageBox.Show("El Precio es obligatorio");
+                MessageBox.Show(ex.ToString());
             }
         }   
-
-
-        // evento del texbox precio .
-        private void EscribirSoloNumeros(object sender, KeyPressEventArgs e)
-        {
-
-        }
-
         private void txtImagen_Leave(object sender, EventArgs e)
         {
             Helper.CargarImagen(pboImagen, txtImagen.Text);
         }
-
         private void BtnAgregarImagen_Click(object sender, EventArgs e)
         {
             imagen = new OpenFileDialog();

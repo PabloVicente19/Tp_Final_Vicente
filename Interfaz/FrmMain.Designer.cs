@@ -37,7 +37,6 @@
             this.modificarProductoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarProductoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verProductosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.busquedaAvanzadaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnBusquedaAvanzada = new System.Windows.Forms.Button();
             this.btnVerProducto = new System.Windows.Forms.Button();
@@ -96,6 +95,7 @@
             this.salirToolStripMenuItem.ShortcutKeyDisplayString = "";
             this.salirToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
             this.salirToolStripMenuItem.Text = "Salir";
+            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
             // productosToolStripMenuItem
             // 
@@ -103,8 +103,7 @@
             this.agregarProductoToolStripMenuItem,
             this.modificarProductoToolStripMenuItem,
             this.eliminarProductoToolStripMenuItem,
-            this.verProductosToolStripMenuItem,
-            this.busquedaAvanzadaToolStripMenuItem});
+            this.verProductosToolStripMenuItem});
             this.productosToolStripMenuItem.Name = "productosToolStripMenuItem";
             this.productosToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.productosToolStripMenuItem.Size = new System.Drawing.Size(73, 19);
@@ -117,6 +116,7 @@
             this.agregarProductoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.agregarProductoToolStripMenuItem.Text = "Agregar Producto";
             this.agregarProductoToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.agregarProductoToolStripMenuItem.Click += new System.EventHandler(this.agregarProductoToolStripMenuItem_Click);
             // 
             // modificarProductoToolStripMenuItem
             // 
@@ -125,6 +125,7 @@
             this.modificarProductoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.modificarProductoToolStripMenuItem.Text = "Modificar Producto";
             this.modificarProductoToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.modificarProductoToolStripMenuItem.Click += new System.EventHandler(this.modificarProductoToolStripMenuItem_Click);
             // 
             // eliminarProductoToolStripMenuItem
             // 
@@ -133,6 +134,7 @@
             this.eliminarProductoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.eliminarProductoToolStripMenuItem.Text = "Eliminar Producto";
             this.eliminarProductoToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.eliminarProductoToolStripMenuItem.Click += new System.EventHandler(this.eliminarProductoToolStripMenuItem_Click);
             // 
             // verProductosToolStripMenuItem
             // 
@@ -141,14 +143,7 @@
             this.verProductosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.verProductosToolStripMenuItem.Text = "Ver Productos";
             this.verProductosToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // busquedaAvanzadaToolStripMenuItem
-            // 
-            this.busquedaAvanzadaToolStripMenuItem.Name = "busquedaAvanzadaToolStripMenuItem";
-            this.busquedaAvanzadaToolStripMenuItem.ShortcutKeyDisplayString = "";
-            this.busquedaAvanzadaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.busquedaAvanzadaToolStripMenuItem.Text = "Busqueda Avanzada";
-            this.busquedaAvanzadaToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.verProductosToolStripMenuItem.Click += new System.EventHandler(this.verProductosToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -172,7 +167,7 @@
             this.btnBusquedaAvanzada.Name = "btnBusquedaAvanzada";
             this.btnBusquedaAvanzada.Padding = new System.Windows.Forms.Padding(0, 10, 0, 5);
             this.btnBusquedaAvanzada.Size = new System.Drawing.Size(90, 90);
-            this.btnBusquedaAvanzada.TabIndex = 6;
+            this.btnBusquedaAvanzada.TabIndex = 4;
             this.btnBusquedaAvanzada.Text = "Buscar";
             this.btnBusquedaAvanzada.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnBusquedaAvanzada.UseVisualStyleBackColor = true;
@@ -186,7 +181,7 @@
             this.btnVerProducto.Name = "btnVerProducto";
             this.btnVerProducto.Padding = new System.Windows.Forms.Padding(0, 10, 0, 3);
             this.btnVerProducto.Size = new System.Drawing.Size(90, 90);
-            this.btnVerProducto.TabIndex = 5;
+            this.btnVerProducto.TabIndex = 3;
             this.btnVerProducto.Text = "Ver Producto";
             this.btnVerProducto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnVerProducto.UseVisualStyleBackColor = true;
@@ -200,7 +195,7 @@
             this.btnEliminarProducto.Name = "btnEliminarProducto";
             this.btnEliminarProducto.Padding = new System.Windows.Forms.Padding(0, 10, 0, 5);
             this.btnEliminarProducto.Size = new System.Drawing.Size(90, 90);
-            this.btnEliminarProducto.TabIndex = 4;
+            this.btnEliminarProducto.TabIndex = 2;
             this.btnEliminarProducto.Text = "Eliminar";
             this.btnEliminarProducto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEliminarProducto.UseVisualStyleBackColor = true;
@@ -214,7 +209,7 @@
             this.btnModificarProducto.Name = "btnModificarProducto";
             this.btnModificarProducto.Padding = new System.Windows.Forms.Padding(0, 10, 0, 5);
             this.btnModificarProducto.Size = new System.Drawing.Size(90, 90);
-            this.btnModificarProducto.TabIndex = 3;
+            this.btnModificarProducto.TabIndex = 1;
             this.btnModificarProducto.Text = "Modificar";
             this.btnModificarProducto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnModificarProducto.UseVisualStyleBackColor = true;
@@ -228,7 +223,7 @@
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Padding = new System.Windows.Forms.Padding(0, 10, 0, 5);
             this.btnSalir.Size = new System.Drawing.Size(90, 90);
-            this.btnSalir.TabIndex = 2;
+            this.btnSalir.TabIndex = 5;
             this.btnSalir.Text = "Salir";
             this.btnSalir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSalir.UseVisualStyleBackColor = true;
@@ -242,7 +237,7 @@
             this.btnAgregarProducto.Name = "btnAgregarProducto";
             this.btnAgregarProducto.Padding = new System.Windows.Forms.Padding(0, 10, 0, 5);
             this.btnAgregarProducto.Size = new System.Drawing.Size(90, 90);
-            this.btnAgregarProducto.TabIndex = 1;
+            this.btnAgregarProducto.TabIndex = 0;
             this.btnAgregarProducto.Text = "Agregar";
             this.btnAgregarProducto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAgregarProducto.UseVisualStyleBackColor = true;
@@ -282,7 +277,7 @@
             this.btnBusqueda.Location = new System.Drawing.Point(675, 51);
             this.btnBusqueda.Name = "btnBusqueda";
             this.btnBusqueda.Size = new System.Drawing.Size(75, 23);
-            this.btnBusqueda.TabIndex = 7;
+            this.btnBusqueda.TabIndex = 3;
             this.btnBusqueda.Text = "Buscar";
             this.btnBusqueda.UseVisualStyleBackColor = true;
             // 
@@ -291,7 +286,7 @@
             this.txtFiltro.Location = new System.Drawing.Point(512, 51);
             this.txtFiltro.Name = "txtFiltro";
             this.txtFiltro.Size = new System.Drawing.Size(112, 25);
-            this.txtFiltro.TabIndex = 6;
+            this.txtFiltro.TabIndex = 2;
             // 
             // cboFiltroCriterio
             // 
@@ -299,7 +294,7 @@
             this.cboFiltroCriterio.Location = new System.Drawing.Point(267, 51);
             this.cboFiltroCriterio.Name = "cboFiltroCriterio";
             this.cboFiltroCriterio.Size = new System.Drawing.Size(121, 25);
-            this.cboFiltroCriterio.TabIndex = 5;
+            this.cboFiltroCriterio.TabIndex = 1;
             // 
             // cboFiltroCampo
             // 
@@ -307,7 +302,7 @@
             this.cboFiltroCampo.Location = new System.Drawing.Point(24, 51);
             this.cboFiltroCampo.Name = "cboFiltroCampo";
             this.cboFiltroCampo.Size = new System.Drawing.Size(121, 25);
-            this.cboFiltroCampo.TabIndex = 4;
+            this.cboFiltroCampo.TabIndex = 0;
             this.cboFiltroCampo.DropDown += new System.EventHandler(this.cboFiltroCampo_DropDown);
             this.cboFiltroCampo.SelectedIndexChanged += new System.EventHandler(this.cboFiltroCampo_SelectedIndexChanged);
             // 
@@ -378,7 +373,7 @@
             this.txtBuscar.Location = new System.Drawing.Point(9, 23);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(134, 25);
-            this.txtBuscar.TabIndex = 3;
+            this.txtBuscar.TabIndex = 0;
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // dgvProductos
@@ -392,7 +387,7 @@
             this.dgvProductos.RowHeadersVisible = false;
             this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProductos.Size = new System.Drawing.Size(546, 369);
-            this.dgvProductos.TabIndex = 2;
+            this.dgvProductos.TabIndex = 1;
             this.dgvProductos.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvProductos_CellMouseDoubleClick);
             this.dgvProductos.SelectionChanged += new System.EventHandler(this.dgvProductos_SelectionChanged);
             // 
@@ -456,7 +451,6 @@
         private System.Windows.Forms.ToolStripMenuItem modificarProductoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eliminarProductoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verProductosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem busquedaAvanzadaToolStripMenuItem;
         private System.Windows.Forms.Panel panelBusquedaContenedor;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnBusqueda;
