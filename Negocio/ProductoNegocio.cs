@@ -33,7 +33,7 @@ namespace Negocio
                     aux.Categoria.Id = Convert.ToInt32(datos.Lector["IdCategoria"]);
                     aux.Categoria.Descripcion = (string)datos.Lector["Categoria"];
                     aux.Imagen = (string)datos.Lector["ImagenUrl"];
-                    aux.Precio = Convert.ToDouble(datos.Lector["Precio"]);
+                    aux.Precio = Math.Round(Convert.ToDecimal(datos.Lector["Precio"]),2);
 
                     productos.Add(aux);
                 }

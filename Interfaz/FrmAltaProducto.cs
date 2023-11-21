@@ -65,7 +65,7 @@ namespace Interfaz
                 else
                     return;
                 if (Helper.ValidarTextBox(txtPrecio,lblPrecio.Text))
-                    producto.Precio = Convert.ToDouble(txtPrecio.Text);
+                    producto.Precio = Convert.ToDecimal(txtPrecio.Text);
                 else
                     return;
                 
