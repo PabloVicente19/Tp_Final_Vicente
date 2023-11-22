@@ -165,7 +165,27 @@ namespace Interfaz
 
             cboFiltroCampo.DataSource = campos;
         }
+        private void btnBusqueda_Click(object sender, EventArgs e)
+        {
+            try
+            {
+               string campo = cboFiltroCampo.SelectedItem.ToString();
+               string criterio = cboFiltroCriterio.SelectedItem.ToString();
+               string filtro = txtFiltro.Text;
 
+                List<Producto> productoFiltrado = negocio.BuscarProducto(campo, criterio, filtro);
+                dgvProductos.DataSource = productoFiltrado;
+                if (productoFiltrado.Count == 0)
+                    MessageBox.Show("¡No existe el Producto!","Busqueda Avanzada",MessageBoxButtons.OK,MessageBoxIcon.Error);
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+
+        }
         // botones del menuStrip
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -220,5 +240,7 @@ namespace Interfaz
             FrmProductoDetalle detalle = new FrmProductoDetalle(Seleccionado);
             detalle.ShowDialog();
         }
+
+  
     }
 }
