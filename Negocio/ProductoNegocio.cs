@@ -126,22 +126,21 @@ namespace Negocio
             List<Producto> filtrado = new List<Producto>();
             try
             {
-                string filtrar = "";
+                
+                string filtrar = String.Empty;
 
                 if (campo == "Precio")
                 {
                     switch (criterio)
                     {
                         case "Mayor a":
-                            filtrar += $"Precio > {descripcion}";
+                            filtrar = "Precio > " + descripcion;
                             break;
                         case "Menor a":
-                            filtrar += $"Precio < {descripcion}";
-
+                            filtrar = "Precio < " + descripcion;
                             break;
                         case "Igual a":
-                            filtrar += $"Precio = {descripcion}";
-
+                            filtrar = "Precio = " + descripcion;
                             break;
                         default:
                             break;
@@ -149,9 +148,15 @@ namespace Negocio
                 }
                 else if (campo == "Marca")
                 {
-                    filtrar = "";
-                    filtrar += $"MAR.Descripcion = {descripcion}";
+                    filtrar = "MAR.Descripcion = '" + criterio + "'";
                 }
+                else if (campo == "Categoria")
+                {
+                    filtrar = "CAT.Descripcion = '" + criterio + "'";
+                }
+
+
+
                 datos.SetearConsulta($"select AR.Id Id,Codigo,Nombre,AR.Descripcion Descripcion,MAR.Descripcion Marca,CAT.Descripcion Categoria,ImagenUrl,IdMarca,IdCategoria,Precio from ARTICULOS AR, CATEGORIAS CAT ,MARCAS MAR where AR.IdCategoria = CAT.Id and AR.IdMarca = MAR.Id and {filtrar}");
                 datos.EjecutarConsulta();
 

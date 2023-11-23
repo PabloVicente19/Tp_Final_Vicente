@@ -44,6 +44,7 @@ namespace Interfaz
             }
         }
 
+        // Grilla de los productos
         private void dgvProductos_SelectionChanged(object sender, EventArgs e)
         {
             try
@@ -66,7 +67,12 @@ namespace Interfaz
             List<Producto> listaFiltrada;
             string filtro = txtBuscar.Text;
             
-            listaFiltrada = productos.FindAll(obj => obj.Nombre.ToLower().Contains(filtro.ToLower()) || obj.Codigo.ToLower().Contains(filtro.ToLower()) || obj.Marca.Descripcion.ToLower().Contains(filtro.ToLower()));
+            listaFiltrada = productos.FindAll(obj => 
+            obj.Nombre.ToLower().Contains(filtro.ToLower()) || 
+            obj.Codigo.ToLower().Contains(filtro.ToLower()) || 
+            obj.Marca.Descripcion.ToLower().Contains(filtro.ToLower()) ||
+            obj.Categoria.Descripcion.ToLower().Contains(filtro.ToLower())
+            );
             
             dgvProductos.DataSource = null;
             dgvProductos.DataSource = listaFiltrada;
@@ -176,7 +182,12 @@ namespace Interfaz
                 List<Producto> productoFiltrado = negocio.BuscarProducto(campo, criterio, filtro);
                 dgvProductos.DataSource = productoFiltrado;
                 if (productoFiltrado.Count == 0)
+                {
                     MessageBox.Show("¡No existe el Producto!","Busqueda Avanzada",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    txtFiltro.Text = "";
+                    dgvProductos.DataSource = null;
+                    dgvProductos.DataSource = negocio.Listar();
+                }
 
             }
             catch (Exception ex)
@@ -185,6 +196,11 @@ namespace Interfaz
                 MessageBox.Show(ex.ToString());
             }
 
+        }
+        private void BtnResetearDgv_Click(object sender, EventArgs e)
+        {
+            dgvProductos.DataSource = null;
+            dgvProductos.DataSource = negocio.Listar();
         }
         // botones del menuStrip
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
@@ -241,6 +257,6 @@ namespace Interfaz
             detalle.ShowDialog();
         }
 
-  
+       
     }
 }

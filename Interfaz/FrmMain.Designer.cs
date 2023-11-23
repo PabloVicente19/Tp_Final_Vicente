@@ -46,6 +46,7 @@
             this.btnAgregarProducto = new System.Windows.Forms.Button();
             this.panelContenedor = new System.Windows.Forms.Panel();
             this.panelBusquedaContenedor = new System.Windows.Forms.Panel();
+            this.BtnResetearDgv = new System.Windows.Forms.Button();
             this.btnBusqueda = new System.Windows.Forms.Button();
             this.txtFiltro = new System.Windows.Forms.TextBox();
             this.cboFiltroCriterio = new System.Windows.Forms.ComboBox();
@@ -275,9 +276,19 @@
             this.panelBusquedaContenedor.TabIndex = 3;
             this.panelBusquedaContenedor.Visible = false;
             // 
+            // BtnResetearDgv
+            // 
+            this.BtnResetearDgv.Location = new System.Drawing.Point(473, 18);
+            this.BtnResetearDgv.Name = "BtnResetearDgv";
+            this.BtnResetearDgv.Size = new System.Drawing.Size(75, 30);
+            this.BtnResetearDgv.TabIndex = 4;
+            this.BtnResetearDgv.Text = "Resetear";
+            this.BtnResetearDgv.UseVisualStyleBackColor = true;
+            this.BtnResetearDgv.Click += new System.EventHandler(this.BtnResetearDgv_Click);
+            // 
             // btnBusqueda
             // 
-            this.btnBusqueda.Location = new System.Drawing.Point(675, 47);
+            this.btnBusqueda.Location = new System.Drawing.Point(680, 46);
             this.btnBusqueda.Name = "btnBusqueda";
             this.btnBusqueda.Size = new System.Drawing.Size(75, 30);
             this.btnBusqueda.TabIndex = 3;
@@ -355,6 +366,7 @@
             // 
             this.panelListaProductos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.panelListaProductos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelListaProductos.Controls.Add(this.BtnResetearDgv);
             this.panelListaProductos.Controls.Add(this.label1);
             this.panelListaProductos.Controls.Add(this.txtBuscar);
             this.panelListaProductos.Controls.Add(this.dgvProductos);
@@ -466,6 +478,7 @@
         private System.Windows.Forms.Label lblFiltro;
         private System.Windows.Forms.Label lblCriterio;
         private System.Windows.Forms.Label lblCampo;
+        private System.Windows.Forms.Button BtnResetearDgv;
     }
 }
 
