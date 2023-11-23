@@ -153,12 +153,20 @@ namespace Interfaz
             {
                 case ("Precio"):
                     cboFiltroCriterio.DataSource = criterioPrecio;
+                    txtFiltro.Visible = true;
+                    lblFiltro.Visible = true;
                     break;
                 case ("Marca"):
                     cboFiltroCriterio.DataSource = marca.Listar();
+                    txtFiltro.Visible = false;
+                    lblFiltro.Visible = false;
+
                     break;
                 case ("Categoria"):
                     cboFiltroCriterio.DataSource = categorias.Listar();
+                    txtFiltro.Visible = false;
+                    lblFiltro.Visible = false;
+
                     break;
                 default:
                     break;
@@ -175,12 +183,30 @@ namespace Interfaz
         {
             try
             {
-               string campo = cboFiltroCampo.SelectedItem.ToString();
-               string criterio = cboFiltroCriterio.SelectedItem.ToString();
-               string filtro = txtFiltro.Text;
+
+                // Si no selecciona ningun campo lanza la advertencia
+                if (cboFiltroCampo.SelectedItem == null)
+                {
+                    MessageBox.Show("Debe Ingresar un Campo");
+                    return;
+                }
+
+                // Si selecciono la categoria precio pero se hace click sin ingresar un valor en el txt lanza la advertencia
+                if (cboFiltroCampo.SelectedItem == "Precio" && txtFiltro.Text == "")
+                {
+                    MessageBox.Show("Debe ingrear un valor");
+                    return;
+                }
+
+               
+                // si pasa las validaciones se guardan los datos en las variables.
+                string campo = cboFiltroCampo.SelectedItem.ToString();
+                string criterio = cboFiltroCriterio.SelectedItem.ToString();
+                string filtro = txtFiltro.Text;
 
                 List<Producto> productoFiltrado = negocio.BuscarProducto(campo, criterio, filtro);
                 dgvProductos.DataSource = productoFiltrado;
+
                 if (productoFiltrado.Count == 0)
                 {
                     MessageBox.Show("¡No existe el Producto!","Busqueda Avanzada",MessageBoxButtons.OK,MessageBoxIcon.Error);
@@ -188,14 +214,11 @@ namespace Interfaz
                     dgvProductos.DataSource = null;
                     dgvProductos.DataSource = negocio.Listar();
                 }
-
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.ToString());
             }
-
         }
         private void BtnResetearDgv_Click(object sender, EventArgs e)
         {

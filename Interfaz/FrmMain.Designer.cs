@@ -46,7 +46,6 @@
             this.btnAgregarProducto = new System.Windows.Forms.Button();
             this.panelContenedor = new System.Windows.Forms.Panel();
             this.panelBusquedaContenedor = new System.Windows.Forms.Panel();
-            this.BtnResetearDgv = new System.Windows.Forms.Button();
             this.btnBusqueda = new System.Windows.Forms.Button();
             this.txtFiltro = new System.Windows.Forms.TextBox();
             this.cboFiltroCriterio = new System.Windows.Forms.ComboBox();
@@ -56,6 +55,7 @@
             this.lblCampo = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panelListaProductos = new System.Windows.Forms.Panel();
+            this.BtnResetearDgv = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
@@ -276,16 +276,6 @@
             this.panelBusquedaContenedor.TabIndex = 3;
             this.panelBusquedaContenedor.Visible = false;
             // 
-            // BtnResetearDgv
-            // 
-            this.BtnResetearDgv.Location = new System.Drawing.Point(473, 18);
-            this.BtnResetearDgv.Name = "BtnResetearDgv";
-            this.BtnResetearDgv.Size = new System.Drawing.Size(75, 30);
-            this.BtnResetearDgv.TabIndex = 4;
-            this.BtnResetearDgv.Text = "Resetear";
-            this.BtnResetearDgv.UseVisualStyleBackColor = true;
-            this.BtnResetearDgv.Click += new System.EventHandler(this.BtnResetearDgv_Click);
-            // 
             // btnBusqueda
             // 
             this.btnBusqueda.Location = new System.Drawing.Point(680, 46);
@@ -305,6 +295,7 @@
             // 
             // cboFiltroCriterio
             // 
+            this.cboFiltroCriterio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFiltroCriterio.FormattingEnabled = true;
             this.cboFiltroCriterio.Location = new System.Drawing.Point(267, 51);
             this.cboFiltroCriterio.Name = "cboFiltroCriterio";
@@ -313,6 +304,7 @@
             // 
             // cboFiltroCampo
             // 
+            this.cboFiltroCampo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFiltroCampo.FormattingEnabled = true;
             this.cboFiltroCampo.Location = new System.Drawing.Point(24, 51);
             this.cboFiltroCampo.Name = "cboFiltroCampo";
@@ -375,6 +367,16 @@
             this.panelListaProductos.Name = "panelListaProductos";
             this.panelListaProductos.Size = new System.Drawing.Size(778, 426);
             this.panelListaProductos.TabIndex = 2;
+            // 
+            // BtnResetearDgv
+            // 
+            this.BtnResetearDgv.Location = new System.Drawing.Point(473, 18);
+            this.BtnResetearDgv.Name = "BtnResetearDgv";
+            this.BtnResetearDgv.Size = new System.Drawing.Size(75, 30);
+            this.BtnResetearDgv.TabIndex = 4;
+            this.BtnResetearDgv.Text = "Resetear";
+            this.BtnResetearDgv.UseVisualStyleBackColor = true;
+            this.BtnResetearDgv.Click += new System.EventHandler(this.BtnResetearDgv_Click);
             // 
             // label1
             // 
