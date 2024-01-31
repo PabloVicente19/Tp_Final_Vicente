@@ -7,10 +7,9 @@ using System.Windows.Forms;
 
 namespace Interfaz
 {
-    public class Helper
+    public static class Helper
     {
-        // CARGA IMAGENES EN UN PICTUREBOX
-        public void CargarImagen(PictureBox pictureBox,string imagen)
+        public static void CargarImagen(PictureBox pictureBox,string imagen)
       {
         string error = "https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg";
         try
@@ -22,14 +21,11 @@ namespace Interfaz
           pictureBox.Load(error);
         }
       }
-        // OCULTA CAMPOS EN UN DATAGRID
-        public void OcultarCamposEnDgb(DataGridView unDataGrid,string columna)
+        public static void OcultarCamposEnDgb(DataGridView unDataGrid,string columna)
         {
             unDataGrid.Columns[columna].Visible = false;
         }
-
-        // 
-        public bool ValidarTextBox(TextBox textBox, string mensaje) 
+        public static bool ValidarTextBox(TextBox textBox, string mensaje) 
         {
             bool valid = false;
             if (textBox.Text.Length > 2)
@@ -40,8 +36,7 @@ namespace Interfaz
             }
             return valid;
         }
-
-        public bool ValidarImagen(TextBox textBox)
+        public static bool ValidarImagen(TextBox textBox)
         {
             bool valid = false;
 
@@ -52,7 +47,5 @@ namespace Interfaz
 
             return valid;
         }
-
-        
     }
 }

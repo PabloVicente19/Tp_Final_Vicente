@@ -22,16 +22,15 @@ namespace Interfaz
 
         }
         private ProductoNegocio negocio = new ProductoNegocio();
-        private Helper helper = new Helper(); // clase que contiene metodos que modifican o crean funcionalidades
         private List<Producto> productos;
         private void frmMain_Load(object sender, EventArgs e)
         {
             productos = negocio.Listar();
             dgvProductos.DataSource = productos;
 
-            helper.CargarImagen(pboProducto, productos[0].Imagen);
-            helper.OcultarCamposEnDgb(dgvProductos, "Id");
-            helper.OcultarCamposEnDgb(dgvProductos, "Descripcion");
+            Helper.CargarImagen(pboProducto, productos[0].Imagen);
+            Helper.OcultarCamposEnDgb(dgvProductos, "Id");
+            Helper.OcultarCamposEnDgb(dgvProductos, "Descripcion");
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -52,9 +51,9 @@ namespace Interfaz
                 if(dgvProductos.CurrentRow != null)
                 {
                     Producto seleccionado = (Producto)dgvProductos.CurrentRow.DataBoundItem;
-                    helper.OcultarCamposEnDgb(dgvProductos, "Id");
-                    helper.OcultarCamposEnDgb(dgvProductos, "Descripcion");
-                    helper.CargarImagen(pboProducto, seleccionado.Imagen);
+                    Helper.OcultarCamposEnDgb(dgvProductos, "Id");
+                    Helper.OcultarCamposEnDgb(dgvProductos, "Descripcion");
+                    Helper.CargarImagen(pboProducto, seleccionado.Imagen);
                 }
             }
             catch (Exception ex )

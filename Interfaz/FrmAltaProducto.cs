@@ -17,7 +17,6 @@ namespace Interfaz
     public partial class FrmAltaProducto : Form
     {
         private Producto producto = null;
-        private Helper Helper = new Helper();
         private OpenFileDialog imagen = null;
         public FrmAltaProducto()
         {
