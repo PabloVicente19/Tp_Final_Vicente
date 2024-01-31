@@ -37,7 +37,7 @@
             this.modificarProductoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarProductoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verProductosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelBtnsContenedor = new System.Windows.Forms.Panel();
             this.btnBusquedaAvanzada = new System.Windows.Forms.Button();
             this.btnVerProducto = new System.Windows.Forms.Button();
             this.btnEliminarProducto = new System.Windows.Forms.Button();
@@ -61,7 +61,7 @@
             this.dgvProductos = new System.Windows.Forms.DataGridView();
             this.pboProducto = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.panelBtnsContenedor.SuspendLayout();
             this.panelContenedor.SuspendLayout();
             this.panelBusquedaContenedor.SuspendLayout();
             this.panelListaProductos.SuspendLayout();
@@ -146,26 +146,28 @@
             this.verProductosToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.verProductosToolStripMenuItem.Click += new System.EventHandler(this.verProductosToolStripMenuItem_Click);
             // 
-            // panel1
+            // panelBtnsContenedor
             // 
-            this.panel1.BackColor = System.Drawing.Color.Gainsboro;
-            this.panel1.Controls.Add(this.btnBusquedaAvanzada);
-            this.panel1.Controls.Add(this.btnVerProducto);
-            this.panel1.Controls.Add(this.btnEliminarProducto);
-            this.panel1.Controls.Add(this.btnModificarProducto);
-            this.panel1.Controls.Add(this.btnSalir);
-            this.panel1.Controls.Add(this.btnAgregarProducto);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 25);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(784, 104);
-            this.panel1.TabIndex = 1;
+            this.panelBtnsContenedor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelBtnsContenedor.BackColor = System.Drawing.Color.Gainsboro;
+            this.panelBtnsContenedor.Controls.Add(this.btnBusquedaAvanzada);
+            this.panelBtnsContenedor.Controls.Add(this.btnVerProducto);
+            this.panelBtnsContenedor.Controls.Add(this.btnEliminarProducto);
+            this.panelBtnsContenedor.Controls.Add(this.btnModificarProducto);
+            this.panelBtnsContenedor.Controls.Add(this.btnSalir);
+            this.panelBtnsContenedor.Controls.Add(this.btnAgregarProducto);
+            this.panelBtnsContenedor.Location = new System.Drawing.Point(0, 25);
+            this.panelBtnsContenedor.Name = "panelBtnsContenedor";
+            this.panelBtnsContenedor.Size = new System.Drawing.Size(784, 104);
+            this.panelBtnsContenedor.TabIndex = 1;
             // 
             // btnBusquedaAvanzada
             // 
+            this.btnBusquedaAvanzada.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnBusquedaAvanzada.Image = ((System.Drawing.Image)(resources.GetObject("btnBusquedaAvanzada.Image")));
             this.btnBusquedaAvanzada.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnBusquedaAvanzada.Location = new System.Drawing.Point(510, 5);
+            this.btnBusquedaAvanzada.Location = new System.Drawing.Point(448, 5);
             this.btnBusquedaAvanzada.Name = "btnBusquedaAvanzada";
             this.btnBusquedaAvanzada.Padding = new System.Windows.Forms.Padding(0, 10, 0, 5);
             this.btnBusquedaAvanzada.Size = new System.Drawing.Size(90, 90);
@@ -177,9 +179,10 @@
             // 
             // btnVerProducto
             // 
+            this.btnVerProducto.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnVerProducto.Image = ((System.Drawing.Image)(resources.GetObject("btnVerProducto.Image")));
             this.btnVerProducto.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnVerProducto.Location = new System.Drawing.Point(399, 5);
+            this.btnVerProducto.Location = new System.Drawing.Point(337, 5);
             this.btnVerProducto.Name = "btnVerProducto";
             this.btnVerProducto.Padding = new System.Windows.Forms.Padding(0, 10, 0, 3);
             this.btnVerProducto.Size = new System.Drawing.Size(90, 90);
@@ -191,9 +194,10 @@
             // 
             // btnEliminarProducto
             // 
+            this.btnEliminarProducto.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnEliminarProducto.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminarProducto.Image")));
             this.btnEliminarProducto.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnEliminarProducto.Location = new System.Drawing.Point(288, 5);
+            this.btnEliminarProducto.Location = new System.Drawing.Point(226, 5);
             this.btnEliminarProducto.Name = "btnEliminarProducto";
             this.btnEliminarProducto.Padding = new System.Windows.Forms.Padding(0, 10, 0, 5);
             this.btnEliminarProducto.Size = new System.Drawing.Size(90, 90);
@@ -205,9 +209,10 @@
             // 
             // btnModificarProducto
             // 
+            this.btnModificarProducto.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnModificarProducto.Image = ((System.Drawing.Image)(resources.GetObject("btnModificarProducto.Image")));
             this.btnModificarProducto.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnModificarProducto.Location = new System.Drawing.Point(177, 5);
+            this.btnModificarProducto.Location = new System.Drawing.Point(115, 5);
             this.btnModificarProducto.Name = "btnModificarProducto";
             this.btnModificarProducto.Padding = new System.Windows.Forms.Padding(0, 10, 0, 5);
             this.btnModificarProducto.Size = new System.Drawing.Size(90, 90);
@@ -219,9 +224,10 @@
             // 
             // btnSalir
             // 
+            this.btnSalir.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnSalir.Image = ((System.Drawing.Image)(resources.GetObject("btnSalir.Image")));
             this.btnSalir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSalir.Location = new System.Drawing.Point(621, 5);
+            this.btnSalir.Location = new System.Drawing.Point(686, 5);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Padding = new System.Windows.Forms.Padding(0, 10, 0, 5);
             this.btnSalir.Size = new System.Drawing.Size(90, 90);
@@ -233,9 +239,10 @@
             // 
             // btnAgregarProducto
             // 
+            this.btnAgregarProducto.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnAgregarProducto.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarProducto.Image")));
             this.btnAgregarProducto.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnAgregarProducto.Location = new System.Drawing.Point(66, 5);
+            this.btnAgregarProducto.Location = new System.Drawing.Point(4, 5);
             this.btnAgregarProducto.Name = "btnAgregarProducto";
             this.btnAgregarProducto.Padding = new System.Windows.Forms.Padding(0, 10, 0, 5);
             this.btnAgregarProducto.Size = new System.Drawing.Size(90, 90);
@@ -247,12 +254,12 @@
             // 
             // panelContenedor
             // 
-            this.panelContenedor.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panelContenedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.panelContenedor.Controls.Add(this.panelBusquedaContenedor);
             this.panelContenedor.Controls.Add(this.panelListaProductos);
-            this.panelContenedor.Controls.Add(this.panel1);
+            this.panelContenedor.Controls.Add(this.panelBtnsContenedor);
             this.panelContenedor.Controls.Add(this.menuStrip1);
+            this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContenedor.Location = new System.Drawing.Point(0, 0);
             this.panelContenedor.Margin = new System.Windows.Forms.Padding(5);
             this.panelContenedor.Name = "panelContenedor";
@@ -435,7 +442,7 @@
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.panel1.ResumeLayout(false);
+            this.panelBtnsContenedor.ResumeLayout(false);
             this.panelContenedor.ResumeLayout(false);
             this.panelContenedor.PerformLayout();
             this.panelBusquedaContenedor.ResumeLayout(false);
@@ -453,7 +460,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem archivoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelBtnsContenedor;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnAgregarProducto;
         private System.Windows.Forms.Panel panelContenedor;
