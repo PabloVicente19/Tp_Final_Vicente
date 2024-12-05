@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominio\Dominio.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Negocio", "Negocio\Negocio.csproj", "{571A5904-38C4-42BC-BBD6-8748A4D89EA3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acceso", "Acceso\Acceso.csproj", "{D82574E0-FD7E-4FFC-8649-32A796CD7F9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mapper", "Mapper\Mapper.csproj", "{5E0F6B42-DF6F-4213-A3D2-E14A157F47A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{571A5904-38C4-42BC-BBD6-8748A4D89EA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{571A5904-38C4-42BC-BBD6-8748A4D89EA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{571A5904-38C4-42BC-BBD6-8748A4D89EA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D82574E0-FD7E-4FFC-8649-32A796CD7F9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D82574E0-FD7E-4FFC-8649-32A796CD7F9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D82574E0-FD7E-4FFC-8649-32A796CD7F9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D82574E0-FD7E-4FFC-8649-32A796CD7F9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E0F6B42-DF6F-4213-A3D2-E14A157F47A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E0F6B42-DF6F-4213-A3D2-E14A157F47A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E0F6B42-DF6F-4213-A3D2-E14A157F47A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E0F6B42-DF6F-4213-A3D2-E14A157F47A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
