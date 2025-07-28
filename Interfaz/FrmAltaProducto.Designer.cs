@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             this.panelContenedor = new System.Windows.Forms.Panel();
-            this.BtnAgregarImagen = new System.Windows.Forms.Button();
-            this.cboCategoria = new System.Windows.Forms.ComboBox();
-            this.cboMarca = new System.Windows.Forms.ComboBox();
-            this.txtPrecio = new System.Windows.Forms.TextBox();
+            this.BtnAddImage = new System.Windows.Forms.Button();
+            this.cmbCategory = new System.Windows.Forms.ComboBox();
+            this.cmbBrand = new System.Windows.Forms.ComboBox();
+            this.txtPrice = new System.Windows.Forms.TextBox();
             this.lblPrecio = new System.Windows.Forms.Label();
-            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnSubmit = new System.Windows.Forms.Button();
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.pboImagen = new System.Windows.Forms.PictureBox();
-            this.txtImagen = new System.Windows.Forms.TextBox();
-            this.txtDescripcion = new System.Windows.Forms.TextBox();
-            this.txtNombre = new System.Windows.Forms.TextBox();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.pbImage = new System.Windows.Forms.PictureBox();
+            this.txtImage = new System.Windows.Forms.TextBox();
+            this.txtDescription = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtCode = new System.Windows.Forms.TextBox();
             this.lblImagen = new System.Windows.Forms.Label();
             this.lblCategoria = new System.Windows.Forms.Label();
             this.lblMarca = new System.Windows.Forms.Label();
@@ -48,23 +48,23 @@
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblCodigo = new System.Windows.Forms.Label();
             this.panelContenedor.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pboImagen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.SuspendLayout();
             // 
             // panelContenedor
             // 
-            this.panelContenedor.Controls.Add(this.BtnAgregarImagen);
-            this.panelContenedor.Controls.Add(this.cboCategoria);
-            this.panelContenedor.Controls.Add(this.cboMarca);
-            this.panelContenedor.Controls.Add(this.txtPrecio);
+            this.panelContenedor.Controls.Add(this.BtnAddImage);
+            this.panelContenedor.Controls.Add(this.cmbCategory);
+            this.panelContenedor.Controls.Add(this.cmbBrand);
+            this.panelContenedor.Controls.Add(this.txtPrice);
             this.panelContenedor.Controls.Add(this.lblPrecio);
-            this.panelContenedor.Controls.Add(this.btnAgregar);
+            this.panelContenedor.Controls.Add(this.btnSubmit);
             this.panelContenedor.Controls.Add(this.lblTitulo);
-            this.panelContenedor.Controls.Add(this.pboImagen);
-            this.panelContenedor.Controls.Add(this.txtImagen);
-            this.panelContenedor.Controls.Add(this.txtDescripcion);
-            this.panelContenedor.Controls.Add(this.txtNombre);
-            this.panelContenedor.Controls.Add(this.txtCodigo);
+            this.panelContenedor.Controls.Add(this.pbImage);
+            this.panelContenedor.Controls.Add(this.txtImage);
+            this.panelContenedor.Controls.Add(this.txtDescription);
+            this.panelContenedor.Controls.Add(this.txtName);
+            this.panelContenedor.Controls.Add(this.txtCode);
             this.panelContenedor.Controls.Add(this.lblImagen);
             this.panelContenedor.Controls.Add(this.lblCategoria);
             this.panelContenedor.Controls.Add(this.lblMarca);
@@ -77,38 +77,38 @@
             this.panelContenedor.Size = new System.Drawing.Size(505, 451);
             this.panelContenedor.TabIndex = 0;
             // 
-            // BtnAgregarImagen
+            // BtnAddImage
             // 
-            this.BtnAgregarImagen.Location = new System.Drawing.Point(226, 292);
-            this.BtnAgregarImagen.Name = "BtnAgregarImagen";
-            this.BtnAgregarImagen.Size = new System.Drawing.Size(29, 23);
-            this.BtnAgregarImagen.TabIndex = 5;
-            this.BtnAgregarImagen.Text = "+";
-            this.BtnAgregarImagen.UseVisualStyleBackColor = true;
-            this.BtnAgregarImagen.Click += new System.EventHandler(this.BtnAgregarImagen_Click);
+            this.BtnAddImage.Location = new System.Drawing.Point(226, 292);
+            this.BtnAddImage.Name = "BtnAddImage";
+            this.BtnAddImage.Size = new System.Drawing.Size(29, 23);
+            this.BtnAddImage.TabIndex = 5;
+            this.BtnAddImage.Text = "+";
+            this.BtnAddImage.UseVisualStyleBackColor = true;
+            this.BtnAddImage.Click += new System.EventHandler(this.BtnAddImage_Click);
             // 
-            // cboCategoria
+            // cmbCategory
             // 
-            this.cboCategoria.FormattingEnabled = true;
-            this.cboCategoria.Location = new System.Drawing.Point(98, 245);
-            this.cboCategoria.Name = "cboCategoria";
-            this.cboCategoria.Size = new System.Drawing.Size(121, 25);
-            this.cboCategoria.TabIndex = 4;
+            this.cmbCategory.FormattingEnabled = true;
+            this.cmbCategory.Location = new System.Drawing.Point(98, 245);
+            this.cmbCategory.Name = "cmbCategory";
+            this.cmbCategory.Size = new System.Drawing.Size(121, 25);
+            this.cmbCategory.TabIndex = 4;
             // 
-            // cboMarca
+            // cmbBrand
             // 
-            this.cboMarca.FormattingEnabled = true;
-            this.cboMarca.Location = new System.Drawing.Point(98, 198);
-            this.cboMarca.Name = "cboMarca";
-            this.cboMarca.Size = new System.Drawing.Size(121, 25);
-            this.cboMarca.TabIndex = 3;
+            this.cmbBrand.FormattingEnabled = true;
+            this.cmbBrand.Location = new System.Drawing.Point(98, 198);
+            this.cmbBrand.Name = "cmbBrand";
+            this.cmbBrand.Size = new System.Drawing.Size(121, 25);
+            this.cmbBrand.TabIndex = 3;
             // 
-            // txtPrecio
+            // txtPrice
             // 
-            this.txtPrecio.Location = new System.Drawing.Point(98, 339);
-            this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(121, 25);
-            this.txtPrecio.TabIndex = 7;
+            this.txtPrice.Location = new System.Drawing.Point(98, 339);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Size = new System.Drawing.Size(121, 25);
+            this.txtPrice.TabIndex = 7;
             // 
             // lblPrecio
             // 
@@ -120,15 +120,15 @@
             this.lblPrecio.TabIndex = 15;
             this.lblPrecio.Text = "Precio";
             // 
-            // btnAgregar
+            // btnSubmit
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(204, 393);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(93, 37);
-            this.btnAgregar.TabIndex = 8;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            this.btnSubmit.Location = new System.Drawing.Point(204, 393);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(93, 37);
+            this.btnSubmit.TabIndex = 8;
+            this.btnSubmit.Text = "Agregar";
+            this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // lblTitulo
             // 
@@ -141,43 +141,43 @@
             this.lblTitulo.TabIndex = 13;
             this.lblTitulo.Text = "Agregar Producto";
             // 
-            // pboImagen
+            // pbImage
             // 
-            this.pboImagen.Location = new System.Drawing.Point(287, 60);
-            this.pboImagen.Name = "pboImagen";
-            this.pboImagen.Size = new System.Drawing.Size(206, 304);
-            this.pboImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pboImagen.TabIndex = 12;
-            this.pboImagen.TabStop = false;
+            this.pbImage.Location = new System.Drawing.Point(287, 60);
+            this.pbImage.Name = "pbImage";
+            this.pbImage.Size = new System.Drawing.Size(206, 304);
+            this.pbImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbImage.TabIndex = 12;
+            this.pbImage.TabStop = false;
             // 
-            // txtImagen
+            // txtImage
             // 
-            this.txtImagen.Location = new System.Drawing.Point(98, 292);
-            this.txtImagen.Name = "txtImagen";
-            this.txtImagen.Size = new System.Drawing.Size(121, 25);
-            this.txtImagen.TabIndex = 6;
-            this.txtImagen.Leave += new System.EventHandler(this.txtImagen_Leave);
+            this.txtImage.Location = new System.Drawing.Point(98, 292);
+            this.txtImage.Name = "txtImage";
+            this.txtImage.Size = new System.Drawing.Size(121, 25);
+            this.txtImage.TabIndex = 6;
+            this.txtImage.Leave += new System.EventHandler(this.txtImagen_Leave);
             // 
-            // txtDescripcion
+            // txtDescription
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(98, 151);
-            this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(121, 25);
-            this.txtDescripcion.TabIndex = 2;
+            this.txtDescription.Location = new System.Drawing.Point(98, 151);
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(121, 25);
+            this.txtDescription.TabIndex = 2;
             // 
-            // txtNombre
+            // txtName
             // 
-            this.txtNombre.Location = new System.Drawing.Point(98, 104);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(121, 25);
-            this.txtNombre.TabIndex = 1;
+            this.txtName.Location = new System.Drawing.Point(98, 104);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(121, 25);
+            this.txtName.TabIndex = 1;
             // 
-            // txtCodigo
+            // txtCode
             // 
-            this.txtCodigo.Location = new System.Drawing.Point(98, 60);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(121, 25);
-            this.txtCodigo.TabIndex = 0;
+            this.txtCode.Location = new System.Drawing.Point(98, 60);
+            this.txtCode.Name = "txtCode";
+            this.txtCode.Size = new System.Drawing.Size(121, 25);
+            this.txtCode.TabIndex = 0;
             // 
             // lblImagen
             // 
@@ -254,7 +254,7 @@
             this.Load += new System.EventHandler(this.FrmAltaProducto_Load);
             this.panelContenedor.ResumeLayout(false);
             this.panelContenedor.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pboImagen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImage)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -262,23 +262,23 @@
         #endregion
 
         private System.Windows.Forms.Panel panelContenedor;
-        private System.Windows.Forms.TextBox txtImagen;
-        private System.Windows.Forms.TextBox txtDescripcion;
-        private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.TextBox txtCodigo;
+        private System.Windows.Forms.TextBox txtImage;
+        private System.Windows.Forms.TextBox txtDescription;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtCode;
         private System.Windows.Forms.Label lblImagen;
         private System.Windows.Forms.Label lblCategoria;
         private System.Windows.Forms.Label lblMarca;
         private System.Windows.Forms.Label lblDescripcion;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblCodigo;
-        private System.Windows.Forms.TextBox txtPrecio;
+        private System.Windows.Forms.TextBox txtPrice;
         private System.Windows.Forms.Label lblPrecio;
-        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Label lblTitulo;
-        private System.Windows.Forms.PictureBox pboImagen;
-        private System.Windows.Forms.ComboBox cboCategoria;
-        private System.Windows.Forms.ComboBox cboMarca;
-        private System.Windows.Forms.Button BtnAgregarImagen;
+        private System.Windows.Forms.PictureBox pbImage;
+        private System.Windows.Forms.ComboBox cmbCategory;
+        private System.Windows.Forms.ComboBox cmbBrand;
+        private System.Windows.Forms.Button BtnAddImage;
     }
 }
