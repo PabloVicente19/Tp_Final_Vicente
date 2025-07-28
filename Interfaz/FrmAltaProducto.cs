@@ -11,105 +11,147 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
 using System.IO;
+using Interfaz.Helpers;
 
 namespace Interfaz
 {
     public partial class FrmAltaProducto : Form
     {
-        private Producto producto = null;
-        private Helper Helper = new Helper();
-        private OpenFileDialog imagen = null;
+        private readonly MarcaNegocio _brandService;
+        private readonly CategoriaNegocio _categoryService;
+        private readonly ProductoNegocio _productService;
+        private Producto _product = null;
+        private OpenFileDialog _imagen = null;
         public FrmAltaProducto()
         {
             InitializeComponent();
+            _brandService = new MarcaNegocio();
+            _categoryService = new CategoriaNegocio();
+            _productService = new ProductoNegocio();
         }
-        public FrmAltaProducto(Producto unProducto)
+        public FrmAltaProducto(Producto product) : this()
         {
-            InitializeComponent();
-            this.producto = unProducto;
+            _product = product;
             Text = "Modificar Producto";
             lblTitulo.Text = "Modificar Producto";
+            btnSubmit.Text = "Modificar";
         }
         private void FrmAltaProducto_Load(object sender, EventArgs e)
         {
-            MarcaNegocio marca = new MarcaNegocio();
-            CategoriaNegocio categoria = new CategoriaNegocio();
-
-            cboCategoria.DataSource = categoria.Listar();
-            cboMarca.DataSource = marca.Listar();
-
-            // si producto no es null, es porque se apreto el boton modificar
-            if (producto != null)
-            {
-                txtCodigo.Text = producto.Codigo;
-                txtNombre.Text = producto.Nombre;
-                txtDescripcion.Text = producto.Descripcion;
-                cboMarca.Text = producto.Marca.Descripcion;
-                cboCategoria.Text = producto.Categoria.Descripcion;
-                txtImagen.Text = producto.Imagen;
-                txtPrecio.Text = producto.Precio.ToString();
-                Helper.CargarImagen(pboImagen,txtImagen.Text);
-            }
+            UIHelper.SetComboBox(cmbCategory, _categoryService.Listar(), "Descripcion", "Id");
+            UIHelper.SetComboBox(cmbBrand, _brandService.Listar(), "Descripcion", "Id");
+            if (_product != null) LoadProduct();
         }
-        private void btnAgregar_Click(object sender, EventArgs e)
+        private void btnSubmit_Click(object sender, EventArgs e)
         {
-            ProductoNegocio productoNegocio = new ProductoNegocio();
-
-            if (producto == null)
-                producto = new Producto();
+            if (_product == null)
+                _product = SetNewProduct();
+            else
+                _product = SetUpdateProduct(_product);
             try
             {
-                producto.Codigo = txtCodigo.Text;
-                if (Helper.ValidarTextBox(txtNombre, lblNombre.Text))
-                    producto.Nombre = txtNombre.Text;
-                else
-                    return;
-                if (Helper.ValidarTextBox(txtPrecio,lblPrecio.Text))
-                    producto.Precio = Convert.ToDecimal(txtPrecio.Text);
-                else
-                    return;
-                
-                producto.Descripcion = txtDescripcion.Text;
-                producto.Marca = (Marca)cboMarca.SelectedItem;
-                producto.Categoria = (Categoria)cboCategoria.SelectedItem;
-
-                producto.Imagen = txtImagen.Text;
-
-                if (producto.Id != 0)
+                if (!ValidateField()) return;
+                if (_product.Id != 0)
                 {
-                    productoNegocio.ModificarProducto(producto);
-                    MessageBox.Show("¡Producto Modificado!", "Alta de producto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    UpdateProduct(_product);
+                    this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
                 else
                 {
-                    if(imagen != null && (!txtImagen.Text.ToLower().Contains("http")))
+                    if (_imagen != null && (!txtImage.Text.ToLower().Contains("http")))
                     {
-                      File.Copy(imagen.FileName, ConfigurationManager.AppSettings["images-catalogo"] + imagen.SafeFileName,true);
+                        File.Copy(_imagen.FileName, ConfigurationManager.AppSettings["images-catalogo"] + _imagen.SafeFileName, true);
                     }
-                    productoNegocio.AgregarProducto(producto);
-                    MessageBox.Show("¡Agregado Correctamente!","Alta de producto",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    AddNewProduct(_product);
+                    this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
             }
-            catch(FormatException ex)
+            catch (FormatException ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-        }   
+        }
         private void txtImagen_Leave(object sender, EventArgs e)
         {
-            Helper.CargarImagen(pboImagen, txtImagen.Text);
+            UIHelper.LoadImage(pbImage, txtImage.Text);
         }
-        private void BtnAgregarImagen_Click(object sender, EventArgs e)
+        private void BtnAddImage_Click(object sender, EventArgs e)
         {
-            imagen = new OpenFileDialog();
-            imagen.Filter = "jpg|*.jpg|png|*.png";
-            if (imagen.ShowDialog() == DialogResult.OK)
+            _imagen = new OpenFileDialog();
+            _imagen.Filter = "jpg|*.jpg|png|*.png";
+            if (_imagen.ShowDialog() == DialogResult.OK)
             {
-                txtImagen.Text = imagen.FileName;
-                Helper.CargarImagen(pboImagen, imagen.FileName);
+                txtImage.Text = _imagen.FileName;
+                UIHelper.LoadImage(pbImage, _imagen.FileName);
             }
+        }
+
+        // Features
+        private Producto SetNewProduct()
+        {
+            Producto product = new Producto();
+            product.Codigo = txtCode.Text;
+            product.Nombre = txtName.Text;
+            product.Descripcion = txtDescription.Text;
+            product.Marca = (Marca)cmbBrand.SelectedItem;
+            product.Categoria = (Categoria)cmbCategory.SelectedItem;
+            product.Imagen = txtImage.Text;
+            product.Precio = decimal.TryParse(txtPrice.Text, out decimal precio) ? precio : 0;
+            return product;
+        }
+        private Producto SetUpdateProduct(Producto product)
+        {
+            product.Codigo = txtCode.Text;
+            product.Nombre = txtName.Text;
+            product.Descripcion = txtDescription.Text;
+            product.Marca = (Marca)cmbBrand.SelectedItem;
+            product.Categoria = (Categoria)cmbCategory.SelectedItem;
+            product.Imagen = txtImage.Text;
+            product.Precio = decimal.TryParse(txtPrice.Text, out decimal precio) ? precio : 0;
+            return product;
+        }
+        private void LoadProduct()
+        {
+            txtCode.Text = _product.Codigo;
+            txtName.Text = _product.Nombre;
+            txtDescription.Text = _product.Descripcion;
+            cmbBrand.SelectedItem = _product.Marca;
+            cmbCategory.SelectedItem = _product.Categoria;
+            txtImage.Text = _product.Imagen;
+            txtPrice.Text = _product.Precio.ToString();
+            UIHelper.LoadImage(pbImage, _product.Imagen);
+        }
+        private bool ValidateField()
+        {
+            if (!ValidationHelper.IsTextFieldValid(txtCode.Text))
+            {
+                MessageBox.Show("El campo Codigo es obligatorio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (!ValidationHelper.IsTextFieldValid(txtName.Text))
+            {
+                MessageBox.Show("El campo Nombre es obligatorio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (!ValidationHelper.IsTextFieldValid(txtPrice.Text) || !decimal.TryParse(txtPrice.Text, out _))
+            {
+                MessageBox.Show("El campo Precio es obligatorio y debe ser un número válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
+        }
+        private void AddNewProduct(Producto product)
+        {
+            _productService.AddProduct(product);
+            MessageBox.Show("¡Producto Agregado!", "Alta de Producto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        private void UpdateProduct(Producto product)
+        {
+            _productService.UpdateProduct(product);
+            MessageBox.Show("¡Producto Modificado!", "Modificación de Producto", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
