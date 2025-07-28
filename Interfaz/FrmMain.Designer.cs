@@ -77,7 +77,7 @@
             this.panel1.Controls.Add(this.btnModificarProducto);
             this.panel1.Controls.Add(this.btnAgregarProducto);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 25);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(784, 104);
             this.panel1.TabIndex = 1;
@@ -154,20 +154,20 @@
             // 
             // panelContenedor
             // 
-            this.panelContenedor.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panelContenedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.panelContenedor.BackColor = System.Drawing.Color.Transparent;
             this.panelContenedor.Controls.Add(this.panelBusquedaContenedor);
             this.panelContenedor.Controls.Add(this.panelListaProductos);
             this.panelContenedor.Controls.Add(this.panel1);
-            this.panelContenedor.Controls.Add(this.menuStrip1);
-            this.panelContenedor.Location = new System.Drawing.Point(0, 0);
+            this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelContenedor.Location = new System.Drawing.Point(0, 25);
             this.panelContenedor.Margin = new System.Windows.Forms.Padding(5);
             this.panelContenedor.Name = "panelContenedor";
-            this.panelContenedor.Size = new System.Drawing.Size(784, 657);
+            this.panelContenedor.Size = new System.Drawing.Size(784, 632);
             this.panelContenedor.TabIndex = 0;
             // 
             // panelBusquedaContenedor
             // 
+            this.panelBusquedaContenedor.BackColor = System.Drawing.Color.Transparent;
             this.panelBusquedaContenedor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelBusquedaContenedor.Controls.Add(this.btnBusqueda);
             this.panelBusquedaContenedor.Controls.Add(this.txtFiltro);
@@ -177,7 +177,7 @@
             this.panelBusquedaContenedor.Controls.Add(this.lblCriterio);
             this.panelBusquedaContenedor.Controls.Add(this.lblCampo);
             this.panelBusquedaContenedor.Controls.Add(this.label2);
-            this.panelBusquedaContenedor.Location = new System.Drawing.Point(5, 135);
+            this.panelBusquedaContenedor.Location = new System.Drawing.Point(5, 110);
             this.panelBusquedaContenedor.Name = "panelBusquedaContenedor";
             this.panelBusquedaContenedor.Size = new System.Drawing.Size(776, 87);
             this.panelBusquedaContenedor.TabIndex = 3;
@@ -263,15 +263,15 @@
             // 
             // panelListaProductos
             // 
-            this.panelListaProductos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.panelListaProductos.BackColor = System.Drawing.Color.Transparent;
             this.panelListaProductos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panelListaProductos.Controls.Add(this.label1);
             this.panelListaProductos.Controls.Add(this.txtFilter);
             this.panelListaProductos.Controls.Add(this.dgvProducts);
             this.panelListaProductos.Controls.Add(this.pboProducto);
-            this.panelListaProductos.Location = new System.Drawing.Point(3, 228);
+            this.panelListaProductos.Location = new System.Drawing.Point(3, 203);
             this.panelListaProductos.Name = "panelListaProductos";
-            this.panelListaProductos.Size = new System.Drawing.Size(778, 426);
+            this.panelListaProductos.Size = new System.Drawing.Size(778, 451);
             this.panelListaProductos.TabIndex = 2;
             // 
             // label1
@@ -362,7 +362,7 @@
             // 
             this.agregarProductoToolStripMenuItem.Name = "agregarProductoToolStripMenuItem";
             this.agregarProductoToolStripMenuItem.ShortcutKeyDisplayString = "";
-            this.agregarProductoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.agregarProductoToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.agregarProductoToolStripMenuItem.Text = "Agregar Producto";
             this.agregarProductoToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.agregarProductoToolStripMenuItem.Click += new System.EventHandler(this.agregarProductoToolStripMenuItem_Click);
@@ -371,7 +371,7 @@
             // 
             this.modificarProductoToolStripMenuItem.Name = "modificarProductoToolStripMenuItem";
             this.modificarProductoToolStripMenuItem.ShortcutKeyDisplayString = "";
-            this.modificarProductoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.modificarProductoToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.modificarProductoToolStripMenuItem.Text = "Modificar Producto";
             this.modificarProductoToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.modificarProductoToolStripMenuItem.Click += new System.EventHandler(this.modificarProductoToolStripMenuItem_Click);
@@ -380,7 +380,7 @@
             // 
             this.eliminarProductoToolStripMenuItem.Name = "eliminarProductoToolStripMenuItem";
             this.eliminarProductoToolStripMenuItem.ShortcutKeyDisplayString = "";
-            this.eliminarProductoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.eliminarProductoToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.eliminarProductoToolStripMenuItem.Text = "Eliminar Producto";
             this.eliminarProductoToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.eliminarProductoToolStripMenuItem.Click += new System.EventHandler(this.eliminarProductoToolStripMenuItem_Click);
@@ -389,7 +389,7 @@
             // 
             this.verProductosToolStripMenuItem.Name = "verProductosToolStripMenuItem";
             this.verProductosToolStripMenuItem.ShortcutKeyDisplayString = "";
-            this.verProductosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.verProductosToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.verProductosToolStripMenuItem.Text = "Ver Productos";
             this.verProductosToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.verProductosToolStripMenuItem.Click += new System.EventHandler(this.verProductosToolStripMenuItem_Click);
@@ -397,16 +397,17 @@
             // buscarProductoToolStripMenuItem
             // 
             this.buscarProductoToolStripMenuItem.Name = "buscarProductoToolStripMenuItem";
-            this.buscarProductoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.buscarProductoToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.buscarProductoToolStripMenuItem.Text = "Buscar Producto";
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.ClientSize = new System.Drawing.Size(784, 657);
             this.Controls.Add(this.panelContenedor);
+            this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMain";
@@ -415,7 +416,6 @@
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.panel1.ResumeLayout(false);
             this.panelContenedor.ResumeLayout(false);
-            this.panelContenedor.PerformLayout();
             this.panelBusquedaContenedor.ResumeLayout(false);
             this.panelBusquedaContenedor.PerformLayout();
             this.panelListaProductos.ResumeLayout(false);
@@ -425,6 +425,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
