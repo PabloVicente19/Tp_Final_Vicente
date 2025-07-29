@@ -8,6 +8,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Dominio;
 using Interfaz.Helpers;
+using Interfaz.Forms;
 using System.Threading.Tasks;
 
 namespace Interfaz
@@ -74,6 +75,8 @@ namespace Interfaz
         }
         private void btnBusquedaAvanzada_Click(object sender, EventArgs e)
         {
+           FrmFindProduct frmFind = new FrmFindProduct();
+            frmFind.ShowDialog();
             if (panelBusquedaContenedor.Visible == false)
             {
                 panelBusquedaContenedor.Visible = true;

@@ -11,9 +11,16 @@ namespace Interfaz.Helpers
 {
     public static class UIHelper
     {
-        public static void SetDataGridView<T>(DataGridView dgv, List<T> source)
+        public static DataGridViewTextBoxColumn[] SetColumsInDataGrid(DataGridViewTextBoxColumn[] columns)
         {
-            dgv.DataSource = source;
+            return columns;
+        }
+        public static void SetDataGridView<T>(DataGridView dgv, DataGridViewTextBoxColumn[] columns, IEnumerable<T> source)
+        {
+            dgv.AutoGenerateColumns = false;
+            if (dgv.Columns.Count <= 0)
+                dgv.Columns.AddRange(SetColumsInDataGrid(columns));
+            dgv.DataSource = source.ToList();
             dgv.ClearSelection();
         }
         public static void SetComboBox<T>(ComboBox cmb, IEnumerable<T> source, string displayMember, string valueMember)

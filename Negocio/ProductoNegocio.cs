@@ -201,6 +201,15 @@ namespace Negocio
                 datos.CerrarConexion();
             }
         }
+        public IEnumerable<Producto> FilterProducs(IEnumerable<Producto> data, int? brandId = null, int? categoryId = null, string name = null)
+        {
+            var filteredList = data;
 
+            if (brandId.HasValue)
+                filteredList = filteredList.Where(product => product.Marca.Id == brandId.Value);
+            if (categoryId.HasValue)
+                filteredList = filteredList.Where(product => product.Categoria.Id == categoryId.Value);
+            return filteredList;
+        }
     }
 }
