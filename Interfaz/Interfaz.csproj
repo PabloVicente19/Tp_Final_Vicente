@@ -90,6 +90,9 @@
     <EmbeddedResource Include="Forms\FrmFindProduct.resx">
       <DependentUpon>FrmFindProduct.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmProduct.resx">
+      <DependentUpon>FrmProduct.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmAltaProducto.resx">
       <DependentUpon>FrmAltaProducto.cs</DependentUpon>
     </EmbeddedResource>

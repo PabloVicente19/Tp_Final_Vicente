@@ -8,24 +8,26 @@ namespace Negocio
 {
     public class CategoriaNegocio
     {
-        private AccesoDeDatos datos;
-        public List<Categoria> Listar()
+        private readonly AccesoDeDatos _context;
+        public CategoriaNegocio()
         {
-            datos = new AccesoDeDatos();
-            List<Categoria> categorias = new List<Categoria>();
+            _context = new AccesoDeDatos();
+        }
+        public ICollection<Categoria> GetAllCategories()
+        {
+            ICollection<Categoria> categories = new List<Categoria>();
             try
             {
-                datos.SetearConsulta("SELECT Id,Descripcion FROM CATEGORIAS");
-                datos.EjecutarConsulta();
-                while (datos.Lector.Read())
+                _context.SetearConsulta("SELECT Id, Descripcion FROM CATEGORIAS");
+                _context.EjecutarConsulta();
+                while (_context.Lector.Read())
                 {
-                    Categoria aux = new Categoria();
-                    aux.Id = Convert.ToInt32(datos.Lector["Id"]);
-                    aux.Descripcion = (string)datos.Lector["Descripcion"];
-
-                    categorias.Add(aux);
+                    Categoria category = new Categoria();
+                    category.Id = Convert.ToInt32(_context.Lector["Id"]);
+                    category.Descripcion = (string)_context.Lector["Descripcion"];
+                    categories.Add(category);
                 }
-                return categorias;
+                return categories;
             }
             catch (Exception ex)
             {
@@ -34,7 +36,7 @@ namespace Negocio
             }
             finally
             {
-                datos.CerrarConexion();
+                _context.CerrarConexion();
             }
         }
     }

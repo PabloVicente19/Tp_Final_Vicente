@@ -16,7 +16,7 @@ namespace Interfaz
     public partial class frmMain : Form
     {
         private readonly ProductoNegocio _productService;
-        private List<Producto> _products;
+        private IEnumerable<Producto> _products;
         public frmMain()
         {
             InitializeComponent();
@@ -29,9 +29,12 @@ namespace Interfaz
         }
         private void btnAgregarProducto_Click(object sender, EventArgs e)
         {
-            FrmAltaProducto frmProduct = new FrmAltaProducto();
+            FrmProduct frmProduct = new FrmProduct();
             frmProduct.ShowDialog();
             if (frmProduct.DialogResult == DialogResult.OK) Init();
+            //FrmAltaProducto frmProduct = new FrmAltaProducto();
+            //frmProduct.ShowDialog();
+            //if (frmProduct.DialogResult == DialogResult.OK) Init();
         }
         private void btnModificarProducto_Click(object sender, EventArgs e)
         {
@@ -41,7 +44,7 @@ namespace Interfaz
                 return;
             }
             Producto product = GetSelectedProduct();
-            FrmAltaProducto frmProduct = new FrmAltaProducto(product);
+            FrmProduct frmProduct = new FrmProduct(product);
             frmProduct.ShowDialog();
             if (frmProduct.DialogResult == DialogResult.OK) Init();
         }
@@ -128,13 +131,13 @@ namespace Interfaz
                     lblFiltro.Visible = true;
                     break;
                 case ("Marca"):
-                    cboFiltroCriterio.DataSource = marca.Listar();
+                    cboFiltroCriterio.DataSource = marca.GetAllBrands();
                     txtFiltro.Visible = false;
                     lblFiltro.Visible = false;
 
                     break;
                 case ("Categoria"):
-                    cboFiltroCriterio.DataSource = categorias.Listar();
+                    cboFiltroCriterio.DataSource = categorias.GetAllCategories();
                     txtFiltro.Visible = false;
                     lblFiltro.Visible = false;
 
@@ -182,7 +185,7 @@ namespace Interfaz
                     MessageBox.Show("¡No existe el Producto!", "Busqueda Avanzada", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtFiltro.Text = "";
                     dgvProducts.DataSource = null;
-                    dgvProducts.DataSource = _productService.Listar();
+                    dgvProducts.DataSource = _productService.GetAllProducts();
                 }
             }
             catch (Exception ex)
@@ -243,7 +246,7 @@ namespace Interfaz
             };
             return columns;
         }
-        private void LoadDataGridView(DataGridView dgv, List<Producto> products)
+        private void LoadDataGridView(DataGridView dgv, IEnumerable<Producto> products)
         {
             dgv.AutoGenerateColumns = false;
             if (dgv.Columns.Count == 0)
@@ -255,7 +258,7 @@ namespace Interfaz
         }
         private void Init()
         {
-            _products = _productService.Listar();
+            _products = _productService.GetAllProducts();
             LoadDataGridView(dgvProducts, _products);
         }
         private bool IsProductSelected() => dgvProducts.CurrentRow != null;

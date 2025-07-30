@@ -106,9 +106,9 @@ namespace Interfaz.Forms
         }
         private void Init()
         {
-            _products = _productService.Listar();
-            _brands = _brandService.Listar();
-            _categories = _categoryService.Listar();
+            _products = _productService.GetAllProducts();
+            _brands = _brandService.GetAllBrands();
+            _categories = _categoryService.GetAllCategories();
 
             _brands = _brands.Prepend(new Marca { Id = 0, Descripcion = "-- Seleccione --" });
             _categories = _categories.Prepend(new Categoria { Id = 0, Descripcion = "-- Seleccione --" });

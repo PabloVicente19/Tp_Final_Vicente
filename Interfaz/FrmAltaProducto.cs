@@ -38,8 +38,8 @@ namespace Interfaz
         }
         private void FrmAltaProducto_Load(object sender, EventArgs e)
         {
-            UIHelper.SetComboBox(cmbCategory, _categoryService.Listar(), "Descripcion", "Id");
-            UIHelper.SetComboBox(cmbBrand, _brandService.Listar(), "Descripcion", "Id");
+            UIHelper.SetComboBox(cmbCategory, _categoryService.GetAllCategories(), "Descripcion", "Id");
+            UIHelper.SetComboBox(cmbBrand, _brandService.GetAllBrands(), "Descripcion", "Id");
             if (_product != null) LoadProduct();
         }
         private void btnSubmit_Click(object sender, EventArgs e)

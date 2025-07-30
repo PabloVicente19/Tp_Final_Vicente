@@ -8,33 +8,35 @@ namespace Negocio
 {
     public class MarcaNegocio
     {
-        private AccesoDeDatos datos;
-       public List<Marca> Listar()
+        private AccesoDeDatos _context;
+        public MarcaNegocio()
         {
-            datos = new AccesoDeDatos();
-            List<Marca> marcas = new List<Marca>();
+            _context = new AccesoDeDatos();
+        }
+        public ICollection<Marca> GetAllBrands()
+        {
+            ICollection<Marca> brands = new List<Marca>();
             try
             {
-                datos.SetearConsulta("SELECT Id,Descripcion FROM MARCAS");
-                datos.EjecutarConsulta();
-                while(datos.Lector.Read())
+                _context.SetearConsulta("SELECT Id,Descripcion FROM MARCAS");
+                _context.EjecutarConsulta();
+                while (_context.Lector.Read())
                 {
-                    Marca aux = new Marca();
-                    aux.Id = Convert.ToInt32(datos.Lector["Id"]);
-                    aux.Descripcion = (string)datos.Lector["Descripcion"];
-                    
-                    marcas.Add(aux);
+                    Marca brand = new Marca();
+                    brand.Id = Convert.ToInt32(_context.Lector["Id"]);
+                    brand.Descripcion = (string)_context.Lector["Descripcion"];
+
+                    brands.Add(brand);
                 }
-                return marcas;
+                return brands;
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
             finally
             {
-                datos.CerrarConexion();
+                _context.CerrarConexion();
             }
         }
     }
