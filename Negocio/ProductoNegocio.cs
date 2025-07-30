@@ -209,6 +209,8 @@ namespace Negocio
                 filteredList = filteredList.Where(product => product.Marca.Id == brandId.Value);
             if (categoryId.HasValue)
                 filteredList = filteredList.Where(product => product.Categoria.Id == categoryId.Value);
+            if(name != null)
+                filteredList = FilterByName(filteredList, name);
             return filteredList;
         }
     }

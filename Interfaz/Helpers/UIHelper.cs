@@ -45,5 +45,27 @@ namespace Interfaz.Helpers
                 pb.Load(errorImage);
             }
         }
+        public static int? GetValueOfComboBox(ComboBox cmb)
+        {
+            var value = cmb.SelectedValue.ToString();
+            var result = int.TryParse(value, out var resultValue);
+
+            if (result)
+            {
+                return resultValue;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public static string GetValueOfTextBox(TextBox txt)
+        {
+            if(string.IsNullOrWhiteSpace(txt.Text))
+            {
+                return null;
+            }
+            return txt.Text.Trim();
+        }
     }
 }

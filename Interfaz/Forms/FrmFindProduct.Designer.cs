@@ -30,12 +30,17 @@
         {
             this.pnlContainer = new System.Windows.Forms.Panel();
             this.pnlOptionsFilterContainer = new System.Windows.Forms.Panel();
+            this.lblCategory = new System.Windows.Forms.Label();
+            this.cmbCategory = new System.Windows.Forms.ComboBox();
+            this.btnResetFilter = new System.Windows.Forms.Button();
             this.btnFindProduct = new System.Windows.Forms.Button();
             this.lblBrand = new System.Windows.Forms.Label();
             this.cmbBrands = new System.Windows.Forms.ComboBox();
             this.dgvProducts = new System.Windows.Forms.DataGridView();
             this.pnlBtnContainer = new System.Windows.Forms.Panel();
             this.btnCloseForm = new System.Windows.Forms.Button();
+            this.txtFilter = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.pnlContainer.SuspendLayout();
             this.pnlOptionsFilterContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
@@ -59,19 +64,56 @@
             // pnlOptionsFilterContainer
             // 
             this.pnlOptionsFilterContainer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlOptionsFilterContainer.Controls.Add(this.label1);
+            this.pnlOptionsFilterContainer.Controls.Add(this.txtFilter);
+            this.pnlOptionsFilterContainer.Controls.Add(this.lblCategory);
+            this.pnlOptionsFilterContainer.Controls.Add(this.cmbCategory);
+            this.pnlOptionsFilterContainer.Controls.Add(this.btnResetFilter);
             this.pnlOptionsFilterContainer.Controls.Add(this.btnFindProduct);
             this.pnlOptionsFilterContainer.Controls.Add(this.lblBrand);
             this.pnlOptionsFilterContainer.Controls.Add(this.cmbBrands);
             this.pnlOptionsFilterContainer.Location = new System.Drawing.Point(6, 6);
             this.pnlOptionsFilterContainer.Name = "pnlOptionsFilterContainer";
-            this.pnlOptionsFilterContainer.Size = new System.Drawing.Size(920, 55);
+            this.pnlOptionsFilterContainer.Size = new System.Drawing.Size(920, 69);
             this.pnlOptionsFilterContainer.TabIndex = 2;
+            // 
+            // lblCategory
+            // 
+            this.lblCategory.AutoSize = true;
+            this.lblCategory.Location = new System.Drawing.Point(226, 13);
+            this.lblCategory.Name = "lblCategory";
+            this.lblCategory.Size = new System.Drawing.Size(57, 13);
+            this.lblCategory.TabIndex = 5;
+            this.lblCategory.Text = "Categorias";
+            // 
+            // cmbCategory
+            // 
+            this.cmbCategory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cmbCategory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbCategory.FormattingEnabled = true;
+            this.cmbCategory.Location = new System.Drawing.Point(226, 27);
+            this.cmbCategory.Margin = new System.Windows.Forms.Padding(3, 3, 20, 3);
+            this.cmbCategory.Name = "cmbCategory";
+            this.cmbCategory.Size = new System.Drawing.Size(200, 21);
+            this.cmbCategory.TabIndex = 4;
+            // 
+            // btnResetFilter
+            // 
+            this.btnResetFilter.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnResetFilter.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnResetFilter.Location = new System.Drawing.Point(743, 3);
+            this.btnResetFilter.Name = "btnResetFilter";
+            this.btnResetFilter.Size = new System.Drawing.Size(170, 23);
+            this.btnResetFilter.TabIndex = 3;
+            this.btnResetFilter.Text = "Eliminar Filtros";
+            this.btnResetFilter.UseVisualStyleBackColor = false;
+            this.btnResetFilter.Click += new System.EventHandler(this.btnResetFilter_Click);
             // 
             // btnFindProduct
             // 
             this.btnFindProduct.BackColor = System.Drawing.Color.SkyBlue;
             this.btnFindProduct.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnFindProduct.Location = new System.Drawing.Point(743, 25);
+            this.btnFindProduct.Location = new System.Drawing.Point(743, 39);
             this.btnFindProduct.Name = "btnFindProduct";
             this.btnFindProduct.Size = new System.Drawing.Size(170, 23);
             this.btnFindProduct.TabIndex = 2;
@@ -94,17 +136,17 @@
             this.cmbBrands.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbBrands.FormattingEnabled = true;
             this.cmbBrands.Location = new System.Drawing.Point(3, 27);
+            this.cmbBrands.Margin = new System.Windows.Forms.Padding(3, 3, 20, 3);
             this.cmbBrands.Name = "cmbBrands";
             this.cmbBrands.Size = new System.Drawing.Size(200, 21);
             this.cmbBrands.TabIndex = 0;
-            this.cmbBrands.SelectedIndexChanged += new System.EventHandler(this.cmbBrands_SelectedIndexChanged);
             // 
             // dgvProducts
             // 
             this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProducts.Location = new System.Drawing.Point(6, 67);
+            this.dgvProducts.Location = new System.Drawing.Point(6, 81);
             this.dgvProducts.Name = "dgvProducts";
-            this.dgvProducts.Size = new System.Drawing.Size(920, 339);
+            this.dgvProducts.Size = new System.Drawing.Size(920, 325);
             this.dgvProducts.TabIndex = 1;
             // 
             // pnlBtnContainer
@@ -127,6 +169,22 @@
             this.btnCloseForm.Text = "Cerrar";
             this.btnCloseForm.UseVisualStyleBackColor = false;
             this.btnCloseForm.Click += new System.EventHandler(this.btnCloseForm_Click);
+            // 
+            // txtFilter
+            // 
+            this.txtFilter.Location = new System.Drawing.Point(449, 27);
+            this.txtFilter.Name = "txtFilter";
+            this.txtFilter.Size = new System.Drawing.Size(200, 20);
+            this.txtFilter.TabIndex = 6;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(449, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Nombre";
             // 
             // FrmFindProduct
             // 
@@ -159,5 +217,10 @@
         private System.Windows.Forms.ComboBox cmbBrands;
         private System.Windows.Forms.Label lblBrand;
         private System.Windows.Forms.Button btnFindProduct;
+        private System.Windows.Forms.Button btnResetFilter;
+        private System.Windows.Forms.Label lblCategory;
+        private System.Windows.Forms.ComboBox cmbCategory;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtFilter;
     }
 }
