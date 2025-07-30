@@ -8,6 +8,8 @@ using System.Linq;
 using System.Windows.Forms;
 using Dominio;
 using Interfaz.Helpers;
+using Interfaz.Forms;
+using System.Threading.Tasks;
 
 namespace Interfaz
 {
@@ -23,8 +25,7 @@ namespace Interfaz
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
-            _products = _productService.Listar();
-            LoadDataGridView(dgvProducts, _products);
+            Init();
         }
         private void btnAgregarProducto_Click(object sender, EventArgs e)
         {
@@ -34,33 +35,48 @@ namespace Interfaz
         }
         private void btnModificarProducto_Click(object sender, EventArgs e)
         {
-            Producto product = (Producto)dgvProducts.CurrentRow.DataBoundItem;
+            if(!IsProductSelected())
+            {
+                MessageBox.Show("Debe seleccionar un producto para modificar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            Producto product = GetSelectedProduct();
             FrmAltaProducto frmProduct = new FrmAltaProducto(product);
             frmProduct.ShowDialog();
             if (frmProduct.DialogResult == DialogResult.OK) Init();
         }
         private void btnEliminarProducto_Click(object sender, EventArgs e)
         {
-            Producto seleccionado = (Producto)dgvProducts.CurrentRow.DataBoundItem;
-            DialogResult = MessageBox.Show($"¿Desea eliminar {seleccionado.Nombre}?", "Eliminar Producto", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if(!IsProductSelected())
+            {
+                MessageBox.Show("Debe seleccionar un producto para eliminar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            Producto selectedProduct = GetSelectedProduct();
+            DialogResult = MessageBox.Show($"¿Desea eliminar {selectedProduct.Nombre}?", "Eliminar Producto", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (DialogResult == DialogResult.Yes)
             {
-                _productService.EliminarProducto(seleccionado);
+                _productService.RemoveProduct(selectedProduct);
                 MessageBox.Show("Producto Eliminado", "Eliminar Producto");
             }
-            _products = _productService.Listar();
-            dgvProducts.DataSource = null;
-            dgvProducts.DataSource = _products;
+            Init();
 
         }
         private void btnVerProducto_Click(object sender, EventArgs e)
         {
-            Producto Seleccionado = (Producto)dgvProducts.CurrentRow.DataBoundItem;
-            FrmProductoDetalle detalle = new FrmProductoDetalle(Seleccionado);
+            if(!IsProductSelected())
+            {
+                MessageBox.Show("Debe seleccionar un producto para ver sus detalles", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            Producto selectedProduc = GetSelectedProduct();
+            FrmProductoDetalle detalle = new FrmProductoDetalle(selectedProduc);
             detalle.ShowDialog();
         }
         private void btnBusquedaAvanzada_Click(object sender, EventArgs e)
         {
+           FrmFindProduct frmFind = new FrmFindProduct();
+            frmFind.ShowDialog();
             if (panelBusquedaContenedor.Visible == false)
             {
                 panelBusquedaContenedor.Visible = true;
@@ -74,7 +90,7 @@ namespace Interfaz
         {
             string productName = txtFilter.Text;
             var filteredList = _productService.FilterByName(_products, productName);
-            dgvProducts.DataSource = filteredList.ToList();
+            LoadDataGridView(dgvProducts, filteredList.ToList());
         }
         private void dgvProductos_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -202,7 +218,7 @@ namespace Interfaz
             DialogResult = MessageBox.Show($"¿Desea eliminar {seleccionado.Nombre}?", "Eliminar Producto", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (DialogResult == DialogResult.Yes)
             {
-                _productService.EliminarProducto(seleccionado);
+                _productService.RemoveProduct(seleccionado);
                 MessageBox.Show("Producto Eliminado", "Eliminar Producto");
                 Init();
             }
@@ -242,5 +258,7 @@ namespace Interfaz
             _products = _productService.Listar();
             LoadDataGridView(dgvProducts, _products);
         }
+        private bool IsProductSelected() => dgvProducts.CurrentRow != null;
+        private Producto GetSelectedProduct() => dgvProducts.CurrentRow.DataBoundItem as Producto;
     }
 }

@@ -15,7 +15,7 @@ namespace Negocio
     
         public AccesoDeDatos()
         {
-            //_Conexion = new SqlConnection("SERVER=.\\SQLEXPRESS; DATABASE=CATALOGO_DB; INTEGRATED SECURITY=TRUE; ");
+            //_Conexion = new SqlConnection("SERVER=.\\SQLEXPRESS01; DATABASE=CATALOGO_DB; INTEGRATED SECURITY=TRUE; ");
             _Conexion = new SqlConnection("Data Source = (local); Initial Catalog = CATALOGO_DB; Integrated Security = True;");
             _Comando = new SqlCommand();
         }
